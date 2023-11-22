@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage ,useFormik} from "formik";
 import * as Yup from "yup";
 import "./Form.css"; // Import the CSS file
 
@@ -23,21 +23,34 @@ const YourFormComponent = () => {
     setFormData(savedFormData);
   }, []);
 
-  const saveToLocalStorage = (data) => {
-    const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
-    const newData = [...savedFormData, data];
-    localStorage.setItem("formData", JSON.stringify(newData));
-    setFormData(newData);
+  const saveToLocalStorage = (data,editMode =false) => {
+    let updatedFormData =[...formData];
+    if (editMode && editIndex  !== null) {
+      updatedFormData[editIndex]= data;
+    }
+    else{
+      updatedFormData =[...updatedFormData, data]
+    }
+    // const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
+    // const newData = [...savedFormData, data];
+    // localStorage.setItem("formData", JSON.stringify(newData));
+    // setFormData(newData);
+    localStorage.setItem("formData", JSON.stringify(updatedFormData));
+    setFormData(updatedFormData);
+    setEditIndex(null);
   };
   const deleteEntry = (index) => {
     const updatedFormData = formData.filter((_, i) => i !== index);
     localStorage.setItem("formData", JSON.stringify(updatedFormData));
     setFormData(updatedFormData);
+
   };
+  const handleEdit = (index) =>{
+    setEditIndex(index);
+    const editedData = formData[index];
+    // formik.setValues(editedData);
+  }
   
-  
-
-
 
   return (
     <div className="container-fluid bg-light">
@@ -204,7 +217,7 @@ const YourFormComponent = () => {
               <td  className="text-center">{data.phone}</td>
               <td  className="text-center">
                 <button className="btn btn-primary" onClick={() => deleteEntry(index)}>   Delete  </button>
-                <button className="btn btn-primary" >  Edit  </button>
+                <button className="btn btn-primary" onClick={() => handleEdit(index)}>  Edit  </button>
               </td>
 
               {/* Add other table data cells for each field */}
