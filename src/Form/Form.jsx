@@ -1,4 +1,4 @@
-import {React, useRef} from "react";
+import { React, useRef } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -17,6 +17,7 @@ const validationSchema = Yup.object().shape({
 const YourFormComponent = () => {
   const [formData, setFormData] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
+  const [filter, setFilter] = useState("");
   const formRef = useRef();
 
   useEffect(() => {
@@ -24,12 +25,12 @@ const YourFormComponent = () => {
     setFormData(savedFormData);
   }, []);
 
-  const saveToLocalStorage = (data,editMode = false) => {
-    let updatedFormData =[...formData];
-    if (editIndex  !== null) {
+  const saveToLocalStorage = (data = false) => {
+    let updatedFormData = [...formData];
+    if (editIndex !== null) {
       updatedFormData[editIndex] = data;
     }
-    else{
+    else {
       updatedFormData = [...updatedFormData, data]
     }
     // const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
@@ -46,7 +47,7 @@ const YourFormComponent = () => {
     setFormData(updatedFormData);
 
   };
-  const handleEdit = (index) =>{
+  const handleEdit = (index) => {
     setEditIndex(index);
     const editedData = formData[index];
     console.log(editedData);
@@ -62,8 +63,12 @@ const YourFormComponent = () => {
     // Formik.setFieldValue('fName', editedData.fName);
     // Formik.setValues(editedData);
   }
-  
-  
+
+  const filterNames = (name) => {
+    return name.toLowerCase().includes(filter.toLowerCase());
+  };
+
+
 
   return (
     <div className="container-fluid bg-light">
@@ -89,14 +94,14 @@ const YourFormComponent = () => {
           resetForm(); // Reset form after submission
           setSubmitting(false);
         }}
-        
-        
+
+
       >
         {(formik) => (
           <Form>
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12">
-                <label className="form-label" htmlFor="fName">
+                <label htmlFor="filter" className="form-label" >
                   First Name
                 </label>
                 <Field
@@ -104,6 +109,8 @@ const YourFormComponent = () => {
                   className="form-control"
                   id="fName"
                   name="fName"
+                  value={filter}
+                  onChange={(e) => setFilter(e.target.value)}
                 />
                 <ErrorMessage
                   name="fName"
@@ -205,30 +212,30 @@ const YourFormComponent = () => {
         )}
       </Formik>
       <table id="scoreTable" className="table table-bordered mt-5">
-      <thead className="thead-dark ">
-  <tr> 
-    
-    <th scope="col" className="text-center">First name</th>
-    <th scope="col"  className="text-center">Last name</th>
-    <th scope="col"  className="text-center">Email</th>
-    <th scope="col"  className="text-center">Class</th>
-    <th scope="col"  className="text-center">Grade</th>
-    <th scope="col"  className="text-center">Ph:no</th>
-    <th scope="col"  className="text-center">Action</th>
-  </tr>
-</thead>
+        <thead className="thead-dark ">
+          <tr>
+
+            <th scope="col" className="text-center">First name</th>
+            <th scope="col" className="text-center">Last name</th>
+            <th scope="col" className="text-center">Email</th>
+            <th scope="col" className="text-center">Class</th>
+            <th scope="col" className="text-center">Grade</th>
+            <th scope="col" className="text-center">Ph:no</th>
+            <th scope="col" className="text-center">Action</th>
+          </tr>
+        </thead>
 
         <tbody id="tableBody">
-          {formData.map((data, index) => (
+          {formData.filter((data) => filterNames(data.fName)).map((data, index) => (
             <tr key={index}>
-            
-              <td  className="text-center">{data.fName}</td>
-              <td  className="text-center">{data.lName}</td>
-              <td  className="text-center">{data.email}</td>
-              <td  className="text-center">{data.class}</td>
+
+              <td className="text-center">{data.fName}</td>
+              <td className="text-center">{data.lName}</td>
+              <td className="text-center">{data.email}</td>
+              <td className="text-center">{data.class}</td>
               <td className="text-center">{data.grade}</td>
-              <td  className="text-center">{data.phone}</td>
-              <td  className="text-center">
+              <td className="text-center">{data.phone}</td>
+              <td className="text-center">
                 <button className="btn btn-primary" onClick={() => deleteEntry(index)}>   Delete  </button>
                 <button className="btn btn-primary" onClick={() => handleEdit(index)}>  Edit  </button>
               </td>
