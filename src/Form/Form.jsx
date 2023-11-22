@@ -1,7 +1,7 @@
-import React from "react";
+import {React, useRef} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage ,useFormik} from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Form.css"; // Import the CSS file
 
@@ -17,19 +17,20 @@ const validationSchema = Yup.object().shape({
 const YourFormComponent = () => {
   const [formData, setFormData] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
+  const formRef = useRef();
 
   useEffect(() => {
     const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
     setFormData(savedFormData);
   }, []);
 
-  const saveToLocalStorage = (data,editMode =false) => {
+  const saveToLocalStorage = (data,editMode = false) => {
     let updatedFormData =[...formData];
-    if (editMode && editIndex  !== null) {
-      updatedFormData[editIndex]= data;
+    if (editIndex  !== null) {
+      updatedFormData[editIndex] = data;
     }
     else{
-      updatedFormData =[...updatedFormData, data]
+      updatedFormData = [...updatedFormData, data]
     }
     // const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
     // const newData = [...savedFormData, data];
@@ -48,8 +49,20 @@ const YourFormComponent = () => {
   const handleEdit = (index) =>{
     setEditIndex(index);
     const editedData = formData[index];
+    console.log(editedData);
+    const formRefCurrent = formRef.current;
+    console.log(formRefCurrent);
+    formRefCurrent.setFieldValue("fName", editedData.fName);
+    formRefCurrent.setFieldValue("lName", editedData.lName);
+    formRefCurrent.setFieldValue("email", editedData.email);
+    formRefCurrent.setFieldValue("class", editedData.class);
+    formRefCurrent.setFieldValue("grade", editedData.grade);
+    formRefCurrent.setFieldValue("phone", editedData.phone);
     // formik.setValues(editedData);
+    // Formik.setFieldValue('fName', editedData.fName);
+    // Formik.setValues(editedData);
   }
+  
   
 
   return (
@@ -57,6 +70,7 @@ const YourFormComponent = () => {
       <h2 className="text-center">Registration</h2>
 
       <Formik
+        innerRef={formRef}
         initialValues={{
           fName: "",
           lName: "",
@@ -64,7 +78,6 @@ const YourFormComponent = () => {
           email: "",
           class: "",
           grade: "",
-          // Add other fields here
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
