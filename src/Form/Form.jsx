@@ -33,10 +33,7 @@ const YourFormComponent = () => {
     else {
       updatedFormData = [...updatedFormData, data]
     }
-    // const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
-    // const newData = [...savedFormData, data];
-    // localStorage.setItem("formData", JSON.stringify(newData));
-    // setFormData(newData);
+   
     localStorage.setItem("formData", JSON.stringify(updatedFormData));
     setFormData(updatedFormData);
     setEditIndex(null);
@@ -72,7 +69,7 @@ const YourFormComponent = () => {
 
   return (
     <div className="container-fluid bg-light">
-      <h2 className="text-center">Registration</h2>
+
 
       <Formik
         innerRef={formRef}
@@ -101,7 +98,7 @@ const YourFormComponent = () => {
           <Form>
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12">
-                <label htmlFor="filter" className="form-label" >
+                <label htmlFor="fName" className="form-label">
                   First Name
                 </label>
                 <Field
@@ -109,17 +106,11 @@ const YourFormComponent = () => {
                   className="form-control"
                   id="fName"
                   name="fName"
-                  value={filter}
-                  onChange={(e) => setFilter(e.target.value)}
                 />
-                <ErrorMessage
-                  name="fName"
-                  component="div"
-                  className="text-danger"
-                />
+                <ErrorMessage name="fName" component="div" className="text-danger" />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12">
-                <label className="form-label" htmlFor="lName">
+                <label htmlFor="lName" className="form-label">
                   Last Name
                 </label>
                 <Field
@@ -128,87 +119,77 @@ const YourFormComponent = () => {
                   id="lName"
                   name="lName"
                 />
-                <ErrorMessage
-                  name="lName"
-                  component="div"
-                  className="text-danger"
-                />
+                <ErrorMessage name="lName" component="div" className="text-danger" />
               </div>
-              <div className="row">
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  <label className="form-label" htmlFor="email">
-                    E-mail{" "}
-                  </label>
-                  <Field
-                    type="text"
-                    className="form-control"
-                    id="email"
-                    name="email"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="text-danger"
-                  />
-                </div>
-                <br />
-                <br />
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  <label className="form-label" htmlFor="class">
-                    class
-                  </label>
-                  <Field
-                    type="text"
-                    className="form-control"
-                    id="class"
-                    name="class"
-                  />
-                  <ErrorMessage
-                    name="class"
-                    component="div"
-                    className="text-danger"
-                  />
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  <label className="form-label" htmlFor="grade">
-                    grade{" "}
-                  </label>
-                  <Field
-                    type="text"
-                    className="form-control"
-                    id="grade"
-                    name="grade"
-                  />
-                  <ErrorMessage
-                    name="grade"
-                    component="div"
-                    className="text-danger"
-                  />
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  <label className="form-label" htmlFor="phone">
-                    phone number{" "}
-                  </label>
-                  <Field
-                    type="text"
-                    className="form-control"
-                    id="phone"
-                    name="phone"
-                  />
-                  <ErrorMessage
-                    name="phone"
-                    component="div"
-                    className="text-danger"
-                  />
-                </div>
-              </div>{" "}
+            </div>
+
+            <div className="row">
+              <div className="col-lg-6 col-md-6 col-sm-12">
+                <label htmlFor="email" className="form-label">
+                  E-mail
+                </label>
+                <Field
+                  type="text"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                />
+                <ErrorMessage name="email" component="div" className="text-danger" />
+              </div>
+              <div className="col-lg-6 col-md-6 col-sm-12">
+                <label htmlFor="class" className="form-label">
+                  Class
+                </label>
+                <Field
+                  type="text"
+                  className="form-control"
+                  id="class"
+                  name="class"
+                />
+                <ErrorMessage name="class" component="div" className="text-danger" />
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-lg-6 col-md-6 col-sm-12">
+                <label htmlFor="grade" className="form-label">
+                  Grade
+                </label>
+                <Field
+                  type="text"
+                  className="form-control"
+                  id="grade"
+                  name="grade"
+                />
+                <ErrorMessage name="grade" component="div" className="text-danger" />
+              </div>
+              <div className="col-lg-6 col-md-6 col-sm-12">
+                <label htmlFor="phone" className="form-label">
+                  Phone Number
+                </label>
+                <Field
+                  type="text"
+                  className="form-control"
+                  id="phone"
+                  name="phone"
+                />
+                <ErrorMessage name="phone" component="div" className="text-danger" />
+              </div>
             </div>
 
             {/* Submit button inside the form */}
-            <div className=" d-flex justify-content-center align-item-center">
-              <button type="submit">Submit</button>
+            <div className="row justify-content-between">
+              <div className="col-lg-6 col-md-6 col-sm-12">
+                {/* You can add additional spacing or elements here if needed */}
+              </div>
+              <div className="col-lg-6 col-md-6 col-sm-12">
+                <button type="submit" className="btn btn-primary w-100">
+                  Submit
+                </button>
+              </div>
             </div>
           </Form>
+
         )}
       </Formik>
       <table id="scoreTable" className="table table-bordered mt-5">
@@ -239,8 +220,6 @@ const YourFormComponent = () => {
                 <button className="btn btn-primary" onClick={() => deleteEntry(index)}>   Delete  </button>
                 <button className="btn btn-primary" onClick={() => handleEdit(index)}>  Edit  </button>
               </td>
-
-              {/* Add other table data cells for each field */}
             </tr>
           ))}
         </tbody>

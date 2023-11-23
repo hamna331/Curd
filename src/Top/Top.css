@@ -1,0 +1,30 @@
+/* Top.css */
+
+.header-area {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+  /* z-index: 1000; */
+  background: rgba(255, 255, 255, 0.9); /* Adjust the alpha value for transparency */
+  backdrop-filter: blur(10px); /* Adjust the blur value for the glass effect */
+}
+
+.navbar {
+  background: transparent !important; /* Make the navbar background transparent */
+}
+
+.navbar-brand {
+  color: #000000; /* Set the text color for the brand */
+}
+
+.navbar-nav .nav-link {
+  color: #000000; /* Set the text color for the links */
+}
+
+.navbar-toggler-icon {
+  background-color: #000000; /* Set the color for the toggler icon */
+}
+
+.menu-trigger span {
+  color: #000000; /* Set the color for the menu trigger text */
+}
