@@ -1,9 +1,13 @@
 import { React, useRef } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Form.css"; // Import the CSS file
+import { BsFillCaretDownFill } from "react-icons/bs";
+import { BsCalendar } from "react-icons/bs";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const validationSchema = Yup.object().shape({
   fName: Yup.string().required("First Name is required"),
@@ -12,6 +16,7 @@ const validationSchema = Yup.object().shape({
   class: Yup.string().required("class is required"),
   grade: Yup.string().required("grade is required"),
   phone: Yup.string().required(" phone number is required"),
+  gender: Yup.string().required(" gender number is required"),
 });
 
 const YourFormComponent = () => {
@@ -29,11 +34,10 @@ const YourFormComponent = () => {
     let updatedFormData = [...formData];
     if (editIndex !== null) {
       updatedFormData[editIndex] = data;
+    } else {
+      updatedFormData = [...updatedFormData, data];
     }
-    else {
-      updatedFormData = [...updatedFormData, data]
-    }
-   
+
     localStorage.setItem("formData", JSON.stringify(updatedFormData));
     setFormData(updatedFormData);
     setEditIndex(null);
@@ -42,7 +46,6 @@ const YourFormComponent = () => {
     const updatedFormData = formData.filter((_, i) => i !== index);
     localStorage.setItem("formData", JSON.stringify(updatedFormData));
     setFormData(updatedFormData);
-
   };
   const handleEdit = (index) => {
     setEditIndex(index);
@@ -59,18 +62,14 @@ const YourFormComponent = () => {
     // formik.setValues(editedData);
     // Formik.setFieldValue('fName', editedData.fName);
     // Formik.setValues(editedData);
-  }
+  };
 
   const filterNames = (name) => {
     return name.toLowerCase().includes(filter.toLowerCase());
   };
 
-
-
   return (
     <div className="container-fluid bg-light">
-
-
       <Formik
         innerRef={formRef}
         initialValues={{
@@ -80,6 +79,9 @@ const YourFormComponent = () => {
           email: "",
           class: "",
           grade: "",
+          birthdate: "",
+          gender: "",
+          profilePicture: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -91,11 +93,74 @@ const YourFormComponent = () => {
           resetForm(); // Reset form after submission
           setSubmitting(false);
         }}
-
-
       >
         {(formik) => (
           <Form>
+            {/* {formData.profilePicture && (
+          <div className="row">
+  <div className="col-lg-6 col-md-6 col-sm-12">
+    <label htmlFor="profilePicture" className="form-label">
+      Profile Picture
+    </label>
+    <input
+      type="file"
+      id="profilePicture"
+      name="profilePicture"
+      accept="image/*"
+      onChange={(event) => {
+        const file = event.currentTarget.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const imageData = e.target.result;
+          setFormData((prevData) => ({
+            ...prevData,
+            profilePicture: imageData,
+          }));
+        };
+        <img
+        src={formData.profilePicture}
+        alt="Profile"
+        style={{ width: "100%", height: "auto" }}
+      />
+      }}
+    />
+  </div>
+</div>
+)} */}
+<div className="row profile">
+  <div className="col-lg-3 col-md-6 col-sm-12 mt-5">
+    <label htmlFor="profilePicture " className="fw-bold">
+      Profile Picture
+    </label>
+    <input
+      type="file"
+      id="profilePicture"
+      name="profilePicture"
+      accept="image/*"
+      onChange={(event) => {
+        const file = event.currentTarget.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const imageData = e.target.result;
+          formik.setFieldValue("profilePicture", imageData);
+        };
+        reader.readAsDataURL(file);
+      }}
+    />
+    {formik.values.profilePicture && (
+      <img
+      className="d-flex justify-content-start"
+        src={formik.values.profilePicture}
+        alt="Profile"
+        style={{ width: "100%", height: "auto" }}
+      />
+    )}
+  </div>
+  <div className="col-lg-9 col-md-6 col-sm-12"/>
+
+</div>
+
+
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="fName" className="form-label">
@@ -107,7 +172,11 @@ const YourFormComponent = () => {
                   id="fName"
                   name="fName"
                 />
-                <ErrorMessage name="fName" component="div" className="text-danger" />
+                <ErrorMessage
+                  name="fName"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="lName" className="form-label">
@@ -119,7 +188,11 @@ const YourFormComponent = () => {
                   id="lName"
                   name="lName"
                 />
-                <ErrorMessage name="lName" component="div" className="text-danger" />
+                <ErrorMessage
+                  name="lName"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
             </div>
 
@@ -134,7 +207,11 @@ const YourFormComponent = () => {
                   id="email"
                   name="email"
                 />
-                <ErrorMessage name="email" component="div" className="text-danger" />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="class" className="form-label">
@@ -146,7 +223,11 @@ const YourFormComponent = () => {
                   id="class"
                   name="class"
                 />
-                <ErrorMessage name="class" component="div" className="text-danger" />
+                <ErrorMessage
+                  name="class"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
             </div>
 
@@ -161,7 +242,11 @@ const YourFormComponent = () => {
                   id="grade"
                   name="grade"
                 />
-                <ErrorMessage name="grade" component="div" className="text-danger" />
+                <ErrorMessage
+                  name="grade"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="phone" className="form-label">
@@ -173,55 +258,187 @@ const YourFormComponent = () => {
                   id="phone"
                   name="phone"
                 />
-                <ErrorMessage name="phone" component="div" className="text-danger" />
+                <ErrorMessage
+                  name="phone"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+            </div>
+            <div className="row">
+            <div className="col-lg-6 col-md-6 col-sm-12 w-100">
+  <label htmlFor="birthdate" className="form-label">
+    Birthdate
+  </label>
+  <div className="input-group" style={{ display: 'flex', alignItems: 'center' }}>
+    <DatePicker
+      id="birthdate"
+      name="birthdate"
+      selected={formik.values.birthdate}
+      onChange={(date) => formik.setFieldValue("birthdate", date)}
+      dateFormat="MM/dd/yyyy"
+      className="form-control"
+      customInput={<input className="form-control" />}
+    />
+    <span  className ="d-flex align-items-center mb-2 " style={{ position: 'absolute', left: '180px' }}>
+      <BsCalendar /> {/* Include the icon component */}
+    </span>
+  </div>
+  <ErrorMessage
+    name="birthdate"
+    component="div"
+    className="text-danger"
+  />
+</div>
+
+
+
+              <div className="col-lg-6 col-md-6 col-sm-12">
+                <label htmlFor="country" className="form-label">
+                  Country
+                </label>
+                <Field
+                  as="select"
+                  id="country"
+                  name="country"
+                  className="form-select"
+                  append={
+                    <label
+                      htmlFor="country"
+                      className="input-group-text bg-white border-start-0"
+                    >
+                      <BsFillCaretDownFill /> {/* Include the icon component */}
+                    </label>
+                  }
+                >
+                  <option value="">Select a country</option>
+                  <option value="USA">United States</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="AT">Austria</option>
+                  <option value="CN">China</option>
+                  {/* Add more countries as needed */}
+                </Field>
+                <ErrorMessage
+                  name="country"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+              <div className="row">
+                <div className="col-lg-6 col-md-6 col-sm-12 w-100 ">
+                  <label className="form-label">Gender</label>
+                  <div role="group" aria-labelledby="my-radio-group">
+                    <label>
+                      <Field type="radio" name="gender" value="male" />
+                      Male
+                    </label>
+                    <label>
+                      <Field
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        className="ms-5"
+                      />
+                      Female
+                    </label>
+                    <label>
+                      <Field
+                        type="radio"
+                        name="gender"
+                        value="other"
+                        className="ms-5"
+                      />
+                      Other
+                    </label>
+                  </div>
+                  <ErrorMessage
+                    name="gender"
+                    component="div"
+                    className="text-danger"
+                  />
+                </div>
               </div>
             </div>
 
             {/* Submit button inside the form */}
-            <div className="row justify-content-between">
+            <div className="row justify-content-center ">
+              {/* <div className="col-lg-6 col-md-6 col-sm-12"> */}
+              {/* You can add additional spacing or elements here if needed */}
+              {/* </div> */}
               <div className="col-lg-6 col-md-6 col-sm-12">
-                {/* You can add additional spacing or elements here if needed */}
-              </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <button type="submit" className="btn btn-primary w-100">
+                <button type="submit" className="btn btn-primary w-100  ">
                   Submit
                 </button>
               </div>
             </div>
           </Form>
-
         )}
       </Formik>
       <table id="scoreTable" className="table table-bordered mt-5">
         <thead className="thead-dark ">
           <tr>
-
-            <th scope="col" className="text-center">First name</th>
-            <th scope="col" className="text-center">Last name</th>
-            <th scope="col" className="text-center">Email</th>
-            <th scope="col" className="text-center">Class</th>
-            <th scope="col" className="text-center">Grade</th>
-            <th scope="col" className="text-center">Ph:no</th>
-            <th scope="col" className="text-center">Action</th>
+            <th scope="col" className="text-center">
+              First name
+            </th>
+            <th scope="col" className="text-center">
+              Last name
+            </th>
+            <th scope="col" className="text-center">
+              Email
+            </th>
+            <th scope="col" className="text-center">
+              Class
+            </th>
+            <th scope="col" className="text-center">
+              Grade
+            </th>
+            <th scope="col" className="text-center">
+              Ph:no
+            </th>
+            <th scope="col" className="text-center">
+              Date
+            </th>
+            <th scope="col" className="text-center">
+              gender
+            </th>
+            <th scope="col" className="text-center">
+              Action
+            </th>
           </tr>
         </thead>
 
         <tbody id="tableBody">
-          {formData.filter((data) => filterNames(data.fName)).map((data, index) => (
-            <tr key={index}>
-
-              <td className="text-center">{data.fName}</td>
-              <td className="text-center">{data.lName}</td>
-              <td className="text-center">{data.email}</td>
-              <td className="text-center">{data.class}</td>
-              <td className="text-center">{data.grade}</td>
-              <td className="text-center">{data.phone}</td>
-              <td className="text-center">
-                <button className="btn btn-primary" onClick={() => deleteEntry(index)}>   Delete  </button>
-                <button className="btn btn-primary" onClick={() => handleEdit(index)}>  Edit  </button>
-              </td>
-            </tr>
-          ))}
+          {formData
+            .filter((data) => filterNames(data.fName))
+            .map((data, index) => (
+              <tr key={index}>
+                <td className="text-center">{data.fName}</td>
+                <td className="text-center">{data.lName}</td>
+                <td className="text-center">{data.email}</td>
+                <td className="text-center">{data.class}</td>
+                <td className="text-center">{data.grade}</td>
+                <td className="text-center">{data.phone}</td>
+                <td className="text-center">{data.birthdate}</td>
+                <td className="text-center">{data.gender}</td>
+                <td className="text-center">
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => deleteEntry(index)}
+                  >
+                    {" "}
+                    Delete{" "}
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => handleEdit(index)}
+                  >
+                    {" "}
+                    Edit{" "}
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
