@@ -19,10 +19,10 @@ const validationSchema = Yup.object().shape({
   gender: Yup.string().required(" gender number is required"),
 });
 
-const YourFormComponent = () => {
+const YourFormComponent = ({ searchQuery }) => {
   const [formData, setFormData] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
-  const [filter, setFilter] = useState("");
+
   const formRef = useRef();
 
   useEffect(() => {
@@ -65,11 +65,16 @@ const YourFormComponent = () => {
   };
 
   const filterNames = (name) => {
-    return name.toLowerCase().includes(filter.toLowerCase());
+    console.log(searchQuery);
+    return name && name.toLowerCase().includes(searchQuery.toLowerCase());
   };
+  
 
   return (
+
+    
     <div className="container-fluid bg-light">
+    
       <Formik
         innerRef={formRef}
         initialValues={{
@@ -127,44 +132,44 @@ const YourFormComponent = () => {
   </div>
 </div>
 )} */}
-<div className="row profile">
-  <div className="col-lg-3 col-md-6 col-sm-12 mt-5">
-    <label htmlFor="profilePicture " className="fw-bold">
-      Profile Picture
-    </label>
-    <input
-      type="file"
-      id="profilePicture"
-      name="profilePicture"
-      accept="image/*"
-      onChange={(event) => {
-        const file = event.currentTarget.files[0];
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const imageData = e.target.result;
-          formik.setFieldValue("profilePicture", imageData);
-        };
-        reader.readAsDataURL(file);
-      }}
-    />
-    {formik.values.profilePicture && (
-      <img
-      className="d-flex justify-content-start"
-        src={formik.values.profilePicture}
-        alt="Profile"
-        style={{ width: "100%", height: "auto" }}
-      />
-    )}
-  </div>
-  <div className="col-lg-9 col-md-6 col-sm-12"/>
+            <div className="row profile">
+              <div className="col-lg-3 col-md-6 col-sm-12 mt-5">
+                <label htmlFor="profilePicture " className="fw-bold">
+                 <h3>Profile Picture</h3> 
+                </label>
+                <input
+                  type="file"
+                  id="profilePicture"
+                  name="profilePicture"
+                  accept="image/*"
+                  onChange={(event) => {
+                    const file = event.currentTarget.files[0];
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                      const imageData = e.target.result;
+                      formik.setFieldValue("profilePicture", imageData);
+                    };
+                    reader.readAsDataURL(file);
+                  }}
+                />
+                {formik.values.profilePicture && (
+                  <img
+                    className="d-flex justify-content-start"
+                    src={formik.values.profilePicture}
+                    alt="Profile"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                )}
+              </div>
+              <div className="col-lg-9 col-md-6 col-sm-12" />
 
-</div>
+            </div>
 
 
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="fName" className="form-label">
-                  First Name
+                  <h3>First Name</h3>
                 </label>
                 <Field
                   type="text"
@@ -180,7 +185,7 @@ const YourFormComponent = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="lName" className="form-label">
-                  Last Name
+                  <h3>Last Name</h3>
                 </label>
                 <Field
                   type="text"
@@ -199,7 +204,8 @@ const YourFormComponent = () => {
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="email" className="form-label">
-                  E-mail
+                  
+                  <h3>E-mail</h3>
                 </label>
                 <Field
                   type="text"
@@ -215,7 +221,8 @@ const YourFormComponent = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="class" className="form-label">
-                  Class
+                 
+                  <h3> Class</h3>
                 </label>
                 <Field
                   type="text"
@@ -234,7 +241,8 @@ const YourFormComponent = () => {
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="grade" className="form-label">
-                  Grade
+                  
+                  <h3> Grade</h3>
                 </label>
                 <Field
                   type="text"
@@ -250,7 +258,8 @@ const YourFormComponent = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="phone" className="form-label">
-                  Phone Number
+                  
+                  <h3> Phone Number</h3>
                 </label>
                 <Field
                   type="text"
@@ -266,36 +275,38 @@ const YourFormComponent = () => {
               </div>
             </div>
             <div className="row">
-            <div className="col-lg-6 col-md-6 col-sm-12 w-100">
-  <label htmlFor="birthdate" className="form-label">
-    Birthdate
-  </label>
-  <div className="input-group" style={{ display: 'flex', alignItems: 'center' }}>
-    <DatePicker
-      id="birthdate"
-      name="birthdate"
-      selected={formik.values.birthdate}
-      onChange={(date) => formik.setFieldValue("birthdate", date)}
-      dateFormat="MM/dd/yyyy"
-      className="form-control"
-      customInput={<input className="form-control" />}
-    />
-    <span  className ="d-flex align-items-center mb-2 " style={{ position: 'absolute', left: '180px' }}>
-      <BsCalendar /> {/* Include the icon component */}
-    </span>
-  </div>
-  <ErrorMessage
-    name="birthdate"
-    component="div"
-    className="text-danger"
-  />
-</div>
+              <div className="col-lg-6 col-md-6 col-sm-12 w-100">
+                <label htmlFor="birthdate" className="form-label">
+                  
+                  <h3>Birthdate</h3>
+                </label>
+                <div className="input-group" style={{ display: 'flex', alignItems: 'center' }}>
+                  <DatePicker
+                    id="birthdate"
+                    name="birthdate"
+                    selected={formik.values.birthdate}
+                    onChange={(date) => formik.setFieldValue("birthdate", date)}
+                    dateFormat="MM/dd/yyyy"
+                    className="form-control"
+                    customInput={<input className="form-control" />}
+                  />
+                  <span className="d-flex align-items-center mb-2 " style={{ position: 'absolute', left: '180px' }}>
+                    <BsCalendar /> {/* Include the icon component */}
+                  </span>
+                </div>
+                <ErrorMessage
+                  name="birthdate"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
 
 
 
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="country" className="form-label">
-                  Country
+                  
+                  <h3>Country</h3>
                 </label>
                 <Field
                   as="select"
@@ -327,11 +338,11 @@ const YourFormComponent = () => {
               </div>
               <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-12 w-100 ">
-                  <label className="form-label">Gender</label>
+                  <label className="form-label"><p>Gender</p></label>
                   <div role="group" aria-labelledby="my-radio-group">
                     <label>
                       <Field type="radio" name="gender" value="male" />
-                      Male
+                      <p>Male</p>
                     </label>
                     <label>
                       <Field
@@ -340,7 +351,7 @@ const YourFormComponent = () => {
                         value="female"
                         className="ms-5"
                       />
-                      Female
+                      <p>Female</p>
                     </label>
                     <label>
                       <Field
@@ -349,7 +360,7 @@ const YourFormComponent = () => {
                         value="other"
                         className="ms-5"
                       />
-                      Other
+                      <p>Other</p>
                     </label>
                   </div>
                   <ErrorMessage
@@ -368,7 +379,7 @@ const YourFormComponent = () => {
               {/* </div> */}
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <button type="submit" className="btn btn-primary w-100  ">
-                  Submit
+                  <p>Submit</p>
                 </button>
               </div>
             </div>
@@ -379,31 +390,37 @@ const YourFormComponent = () => {
         <thead className="thead-dark ">
           <tr>
             <th scope="col" className="text-center">
-              First name
+              <p>First name</p>
             </th>
             <th scope="col" className="text-center">
-              Last name
+              
+              <p>Last name</p>
             </th>
             <th scope="col" className="text-center">
-              Email
+              <p>Email</p>
             </th>
             <th scope="col" className="text-center">
-              Class
+             
+              <p> Class</p>
             </th>
             <th scope="col" className="text-center">
-              Grade
+             
+              <p> Grade</p>
             </th>
             <th scope="col" className="text-center">
-              Ph:no
+             
+              <p> Ph:no</p>
             </th>
             <th scope="col" className="text-center">
-              Date
+             
+              <p>Date</p>
             </th>
             <th scope="col" className="text-center">
-              gender
+              <p>gender</p>
             </th>
             <th scope="col" className="text-center">
-              Action
+              
+              <p>Action</p>
             </th>
           </tr>
         </thead>
@@ -419,7 +436,11 @@ const YourFormComponent = () => {
                 <td className="text-center">{data.class}</td>
                 <td className="text-center">{data.grade}</td>
                 <td className="text-center">{data.phone}</td>
-                <td className="text-center">{data.birthdate}</td>
+                <td>{data.birthdate instanceof Date
+                  ? data.birthdate.toLocaleDateString()
+                  : data.birthdate}
+                  </td>
+                
                 <td className="text-center">{data.gender}</td>
                 <td className="text-center">
                   <button
@@ -427,14 +448,14 @@ const YourFormComponent = () => {
                     onClick={() => deleteEntry(index)}
                   >
                     {" "}
-                    Delete{" "}
+                   <p> Delete{" "}</p>
                   </button>
                   <button
                     className="btn btn-primary"
                     onClick={() => handleEdit(index)}
                   >
                     {" "}
-                    Edit{" "}
+                    <p>Edit{" "}</p>
                   </button>
                 </td>
               </tr>
