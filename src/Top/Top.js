@@ -46,7 +46,7 @@ function Top() {
                     </div>
                 </div>
             </div>
-            <header className="header-area header-sticky">
+            <header className="header-area header-sticky"style={{ background: 'linear-gradient(to right, #ff8c00, #ff0080)' }}>
                 <div className="row ">
                     <nav className="navbar navbar-expand-lg navbar-light">
                         <a className="navbar-brand" href="index.html">
