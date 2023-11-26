@@ -1,4 +1,4 @@
-import { React, useRef } from "react";
+import { React, useRef, } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -8,6 +8,7 @@ import { BsFillCaretDownFill } from "react-icons/bs";
 import { BsCalendar } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   fName: Yup.string().required("First Name is required"),
@@ -65,8 +66,10 @@ const YourFormComponent = ({ searchQuery }) => {
   };
 
   const filterNames = (name) => {
-    console.log(searchQuery);
-    return name && name.toLowerCase().includes(searchQuery.toLowerCase());
+    if (searchQuery && name) {
+      return name.toLowerCase().includes(searchQuery.toLowerCase());
+    }
+    return false;
   };
   
 
@@ -443,6 +446,10 @@ const YourFormComponent = ({ searchQuery }) => {
                 
                 <td className="text-center">{data.gender}</td>
                 <td className="text-center">
+                   {/* Use Link component for navigation */}
+                   <Link to={`/student-detail/${index}`} className="btn btn-primary">
+                    <p>View</p>
+                  </Link>
                   <button
                     className="btn btn-primary"
                     onClick={() => deleteEntry(index)}

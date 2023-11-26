@@ -1,16 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Form from './Form/Form';
+
 import Top from './Top/Top';
+import YourFormComponent from './Form/Form';
+import Home from './Home/Home';
+import FormComponent from './studantData/studantForm';
+import TableComponent from './studantData/studantTable';
+import studentCard from './studantData/studentCard';
 
-function App() {
+const App = () => {
+  const [formData, setFormData] = useState([]);
+
   return (
-    <div>
-
+    <Router>
       <Top />
-      {/* <Form /> */}
-    </div>
-
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/yourForm" element={<YourFormComponent />} />
+        <Route  path="/table" element={<TableComponent formData={formData} setFormData={setFormData} />} />
+        <Route path="/form" element={<FormComponent formData={formData} setFormData={setFormData} />} />
+        <Route path="/edit/:index" element={<FormComponent formData={formData} setFormData={setFormData} />} />
+        <Route path="/card" element={<studentCard />} />
+      </Routes>
+    </Router>
   );
 }
 

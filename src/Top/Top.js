@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import YourFormComponent from '../Form/Form';
-import './Top.css';
+import 'font-awesome/css/font-awesome.min.css';
+import { Link } from 'react-router-dom';
+
 
 function Top() {
 
@@ -62,49 +64,49 @@ function Top() {
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav mx-auto">
-                                <li className="nav-item active">
-                                    <a className="nav-link" href="#top">
+                            <ul className="navbar-nav mx-auto" style={{ textDecoration: 'none', listStyle: 'none', display: 'flex', alignItems: 'center' }}>
+                                <li className="nav-item active" style={{ marginRight: '15px' }}>
+                                    <Link to="/" style={{ color: 'black', textDecoration: 'none' }}>
                                         Home
-                                    </a>
+                                    </Link>
+                                </li>
+                                <li className="nav-item" style={{ marginRight: '15px' }}>
+                                    <Link to="/form" style={{ color: 'black', textDecoration: 'none' }}>
+                                        Form
+                                    </Link>
+                                </li>
+                                <li className="nav-item" style={{ marginRight: '15px' }}>
+                                    <Link to="/table" style={{ color: 'black', textDecoration: 'none' }}>
+                                        Table
+                                    </Link>
+                                </li>
+                                <li className="nav-item" style={{ marginRight: '15px' }}>
+                                    <Link to="/card" style={{ color: 'black', textDecoration: 'none' }}>
+                                        Card
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="meetings.html">
-                                        Meetings
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#apply">
-                                        Apply Now
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#courses">
-                                        Courses
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#contact">
-                                        Contact Us
-                                    </a>
+                                    <Link to="/yourForm" style={{ color: 'black', textDecoration: 'none' }}>
+                                        Your Form
+                                    </Link>
                                 </li>
                             </ul>
                             <div className="ml-auto mt-1">
                                 {/* <form className="form-inline" onSubmit={handleSearch}> */}
-                                    <input
-                                        className="form-control mr-sm-2"
-                                        type="search"
-                                        placeholder="Search"
-                                        aria-label="Search"
-                                        value={searchQuery}
-                                        onChange={handleSearch}
-                                    />
+                                <input
+                                    className="form-control mr-sm-2"
+                                    type="search"
+                                    placeholder="Search"
+                                    aria-label="Search"
+                                    value={searchQuery}
+                                    onChange={handleSearch}
+                                />
                                 {/* </form> */}
                             </div>
                         </div>
                     </nav>
                 </div>
-                <YourFormComponent searchQuery={searchQuery} />
+                {/* <YourFormComponent searchQuery={searchQuery} /> */}
             </header>
         </>
 
