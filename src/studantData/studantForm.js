@@ -18,56 +18,79 @@ const validationSchema = Yup.object().shape({
     // gender: Yup.string().required("Gender is required"),
 });
 
-const FormComponent = ({ formData, setFormData,}) => {
+const FormComponent = ({ formData, setFormData }) => {
 
     const [editIndex, setEditIndex] = useState(null)
     const navigate = useNavigate();
     const formRef = useRef();
     const { index } = useParams();
 
-    useEffect(() => {
-        // If an index is provided in the URL params, populate the form with the corresponding data
-        if (index !== undefined && formData[index]) {
-          const editedData = formData[index];
-          formRef.current.setFieldValue("fName", editedData.fName);
-          // ... (populate other fields)
-        }
-      }, [formData, index]);
 
+
+    useEffect(() => {
+        const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
+        setFormData(savedFormData);
+        console.log("======>>>>Saveddata",savedFormData);
+      }, []);
+    
       const saveToLocalStorage = (data = false) => {
-        let updatedFormData = Array.isArray(formData) ? [...formData] : [];
-      
+        let updatedFormData = [...formData];
         if (editIndex !== null) {
           updatedFormData[editIndex] = data;
         } else {
-          updatedFormData.push(data);
+          updatedFormData = [...updatedFormData, data];
         }
-      
-        if (typeof setFormData === "function") {
-          localStorage.setItem("formData", JSON.stringify(updatedFormData));
-          setFormData(updatedFormData);
-          setEditIndex(null);
-        } else {
-          console.error("setFormData is not a function");
-        }
+    
+        localStorage.setItem("formData", JSON.stringify(updatedFormData));
+        setFormData(updatedFormData);
+        setEditIndex(null);
+
+        // Reset the form
+        formRef.current.resetForm();
       };
+
+        
+ 
+
+
+
+
+    const handleEdit = (index) => {
+        setEditIndex(index);
+        const editedData = formData[index];
+        formRef.current.setFieldValue("fName", editedData.fName);
+        formRef.current.setFieldValue("lName", editedData.lName);
+        formRef.current.setFieldValue("email", editedData.email);
+        formRef.current.setFieldValue("class", editedData.class);
+        formRef.current.setFieldValue("grade", editedData.grade);
+        formRef.current.setFieldValue("phone", editedData.phone);
+    };
+    useEffect(() => {
+        console.log('UseEffect Executed'); 
+        // If an index is provided in the URL params, populate the form with the corresponding data
+        if (index !== undefined && formData[index]) {
+          const editedData = formData[index];
+
+          
+          console.log('Index:', index);
+          console.log('Edited Data:', editedData);
       
+          const formattedBirthdate = editedData.birthdate
+            ? new Date(editedData.birthdate)
+            : null;
+      
+          console.log('Formatted Birthdate:', formattedBirthdate);
+      
+          formRef.current.setValues({
+            ...editedData,
+            birthdate: formattedBirthdate,
+          });
+        }
+      }, [formData, index]);
       
 
-    // const handleEdit = (index) => {
-    //     setEditIndex(index);
-    //     const editedData = formData[index];
-    //     formRef.current.setFieldValue("fName", editedData.fName);
-    //     formRef.current.setFieldValue("lName", editedData.lName);
-    //     formRef.current.setFieldValue("email", editedData.email);
-    //     formRef.current.setFieldValue("class", editedData.class);
-    //     formRef.current.setFieldValue("grade", editedData.grade);
-    //     formRef.current.setFieldValue("phone", editedData.phone);
-    // };
-    
 
 
-    
 
     return (
         <Formik
@@ -86,8 +109,30 @@ const FormComponent = ({ formData, setFormData,}) => {
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 console.log("Form submitted! Values:", values);
-                saveToLocalStorage(values);
-                console.log(values);
+            
+                // Check if editIndex is not null, indicating that we are editing an existing entry
+                if (editIndex !== null) {
+                    // Update the existing entry in the formData array
+                    const updatedFormData = [...formData];
+                    updatedFormData[editIndex] = values;
+            
+                    // Update localStorage and state
+                    localStorage.setItem("formData", JSON.stringify(updatedFormData));
+                    setFormData(updatedFormData);
+                    setEditIndex(null); // Reset editIndex
+            
+                    console.log("Entry updated!");
+                } else {
+                    // If editIndex is null, add a new entry to the formData array
+                    const updatedFormData = [...formData, values];
+            
+                    // Update localStorage and state
+                    localStorage.setItem("formData", JSON.stringify(updatedFormData));
+                    setFormData(updatedFormData);
+            
+                    console.log("New entry added!");
+                }
+            
                 resetForm();
                 setSubmitting(false);
             

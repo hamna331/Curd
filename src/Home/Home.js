@@ -45,7 +45,7 @@ const Home = () => {
             <img src={team4Img} className="img-fluid" style={{ maxHeight: '100vh', maxWidth: '100vw', width: '100%', height: 'auto' }} alt="First slide" />
               <div className="carousel-caption">
                 <div className="container carousel-content">
-                  <h6 className="text-secondary h4 animated fadeInUp" style={{ marginBottom: '10px' }}>Best IT Solutions</h6>
+                  <h6 className="text-secondary h4 animated fadeInUp" style={{ marginTop: '0px !important' }}>Best IT Solutions</h6>
                   <h1 className="text-white display-1 mb-4 animated fadeInLeft">Quality Digital Services You Really Need!</h1>
                   <p className="mb-4 text-white fs-5 animated fadeInDown">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Pellentesque aliquam dolor eget urna ultricies tincidunt.</p>
                   <a href="" className="me-2"><button type="button" className="px-4 py-2 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">Read More</button></a>

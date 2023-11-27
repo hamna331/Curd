@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const TableComponent = ({ formData, setFormData, searchQuery }) => {
+const TableComponent = ({  searchQuery }) => {
+  const [formData, setFormData] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const TableComponent = ({ formData, setFormData, searchQuery }) => {
 
   const handleEdit = (index) => {
     navigate(`/edit/${index}`);
+    console.log(index);
   };
 
   const filterNames = (name) => {
@@ -52,7 +54,7 @@ const TableComponent = ({ formData, setFormData, searchQuery }) => {
         </thead>
         <tbody>
           {formData
-            .filter((data) => filterNames(data.fName))
+         
             .map((data, index) => (
               <tr key={index}>
                 <td className="text-center">{data.fName}</td>
@@ -67,7 +69,7 @@ const TableComponent = ({ formData, setFormData, searchQuery }) => {
                     : data.birthdate}
                 </td>
                 <td className="text-center">{data.gender}</td>
-                <td className="text-center">
+                <td className="row text-center">
                   <Link to={`/student-card/${index}`} className="btn btn-primary me-2">
                     View
                   </Link>
