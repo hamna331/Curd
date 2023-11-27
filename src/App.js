@@ -18,8 +18,9 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/yourForm" element={<YourFormComponent />} />
-        <Route  path="/table" element={<TableComponent formData={formData} setFormData={setFormData} />} />
+        <Route path="/table" element={<TableComponent formData={formData} setFormData={setFormData} />} />
         <Route path="/form" element={<FormComponent formData={formData} setFormData={setFormData} />} />
+        {/* Use the :index parameter in the route to pass it to FormComponent */}
         <Route path="/edit/:index" element={<FormComponent formData={formData} setFormData={setFormData} />} />
         <Route path="/card" element={<studentCard />} />
       </Routes>
