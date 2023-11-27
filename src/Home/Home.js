@@ -1,7 +1,11 @@
 import React from 'react';
-import { useEffect } from 'react';
+import '../Home/Home.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import team2Img from '../assets/asdf2.jpg';
 import team4Img from '../assets/asdf1.jpg';
+import Testimonials from './Testimonials';
+import About from './About';
+import Services from './Services';
 
 
 const Home = () => {
@@ -30,13 +34,14 @@ const Home = () => {
           </ol>
           <div className="carousel-inner" role="listbox">
             <div className="carousel-item active">
-              <img src={team2Img} className="img-fluid" style={{ maxHeight: '100vh', maxWidth: '100vw', width: '100%', height: 'auto' }} alt="First slide" />
+              <img src={team2Img} className="img-fluid" style={{ maxHeight: '100vh', maxWidth: '100vw', width: '100%', height: 'auto', }} alt="First slide" />
               <div className="carousel-caption">
                 <div className="container carousel-content">
-                  <h6 className="text-secondary h4 animated fadeInUp mt-5" style={{ marginBottom: '10px' }}>Best IT Solutions</h6>
+                  <h6 className="text-secondary h4 animated fadeInUp mt-5 text-success" style={{ marginBottom: '10px' }}>Best IT Solutions</h6>
+                  <h1 className="text-white display-1 mb-4 animated fadeInRight">An Innovative IT Solutions Agency</h1>
                   {/* <h1 className="text-white display-1 mb-4 animated fadeInRight">An Innovative IT Solutions Agency</h1> */}
                   <p className="mb-4 text-white fs-5 animated fadeInDown mt-5">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Pellentesque aliquam dolor eget urna ultricies tincidunt.</p>
-                  <a href="" className="me-2"><button type="button" className="px-4 py-2 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">Read More</button></a>
+                  <a href="" className="me-2"><button type="button" className="px-4 py-2 px-sm-5 btn btn-success rounded-pill carousel-content-btn1 animated fadeInLeft">Read More</button></a>
                   <a href="" className="ms-2"><button type="button" className="px-4 py-2 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Contact Us</button></a>
                 </div>
               </div>
@@ -48,7 +53,7 @@ const Home = () => {
                   <h6 className="text-secondary h4 animated fadeInUp" style={{ marginTop: '0px !important' }}>Best IT Solutions</h6>
                   <h1 className="text-white display-1 mb-4 animated fadeInLeft">Quality Digital Services You Really Need!</h1>
                   <p className="mb-4 text-white fs-5 animated fadeInDown">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Pellentesque aliquam dolor eget urna ultricies tincidunt.</p>
-                  <a href="" className="me-2"><button type="button" className="px-4 py-2 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">Read More</button></a>
+                  <a href="" className="me-2"><button type="button" className="px-4 py-2 px-sm-5 btn btn-success rounded-pill carousel-content-btn1 animated fadeInLeft">Read More</button></a>
                   <a href="" className="ms-2"><button type="button" className="px-4 py-2 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Contact Us</button></a>
                 </div>
               </div>
@@ -64,6 +69,9 @@ const Home = () => {
           </button>
         </div>
       </div>
+      <Testimonials/>
+      <About/>
+      <Services/>
     </>
   );
 };

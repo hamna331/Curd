@@ -15,8 +15,8 @@ function Top() {
     };
     return (
         <>
-            <div className="bg-dark mt-0">
-                <div className="container">
+            <div className="bg-dark mt-0 ">
+                <div className="container mt-0">
                     <div className="row text-white align-items-center">
                         <div className="col-3">
                             <i className="fa fa-map-marker them-color"></i>{' '}
