@@ -13,21 +13,18 @@ function Services() {
           <h1 className='fw-bold'>Services Built Specifically <br />For Your Business</h1>
         </div>
         <div className="row g-5 services-inner">
-          <div className=" col-lg-4 wow fadeIn" data-wow-delay=".3s">
-            <div className="services-item bg-light">
-              <div className="p-4 text-center services-content">
-                <div className="services-content-icon">
-                <i className="mb-4 text-primary"> <FontAwesomeIcon icon={faCode} size="7x"  /></i>
-                  <h4 className="mb-3">Web Design</h4>
-                  <p className="mb-4">
-                    Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum.
-                    Aliquam dolor eget urna ultricies tincidunt.
-                  </p>
-                  <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">Read More</a>
+        <div className=" col-lg-4 wow fadeIn" data-wow-delay=".5s">
+                <div className="services-item bg-light">
+                    <div className="p-4 text-center services-content">
+                        <div className="services-content-icon">
+                        <i className=" fa-7x mb-4 text-primary"><FontAwesomeIcon icon={faCode} /></i>
+                            <h4 className="mb-3">Web Design</h4>
+                            <p className="mb-4">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.</p>
+                            <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">Read More</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
             <div className=" col-lg-4 wow fadeIn" data-wow-delay=".5s">
                 <div className="services-item bg-light">
                     <div className="p-4 text-center services-content">

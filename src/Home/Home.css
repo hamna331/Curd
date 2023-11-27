@@ -1,6 +1,9 @@
 .carousel-item {
     position: relative;
   }
+  .btn{
+    border-style: none;
+  }
   
   .carousel-item::after {
     content: "";
@@ -293,6 +296,7 @@
 .services-item:hover .services-content-icon p {
     color: var(--bs-white);
 }
+
   
                   
                 
