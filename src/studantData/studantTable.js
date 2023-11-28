@@ -35,21 +35,34 @@ const TableComponent = () => {
 
   const handleView = (index) => {
     const studentData = formData[index];
-    // Pass the student data to the StudentCard route
+    console.log("StudentData before navigating:", studentData);
+  
+    // Use navigate to pass data as state
     navigate(`/student-card/${index}`, { state: { studentData } });
   };
   
+  
 
-  const filteredData = formData.filter((data) => filterNames(data.fName));
+  const filteredData = formData.filter((data) => filterNames(data));
 
-  function filterNames(name) {
+
+  function filterNames(data) {
     const currentSearchQuery = new URLSearchParams(location.search).get('search');
   
-    if (currentSearchQuery && name) {
-      return name.toLowerCase().includes(currentSearchQuery.toLowerCase());
+    if (currentSearchQuery) {
+      const lowercaseQuery = currentSearchQuery.toLowerCase();
+      return (
+        (data.fName && data.fName.toLowerCase().includes(lowercaseQuery)) ||
+        (data.lName && data.lName.toLowerCase().includes(lowercaseQuery)) ||
+        (data.email && data.email.toLowerCase().includes(lowercaseQuery)) ||
+        (data.class && data.class.toString().includes(currentSearchQuery))
+        // Add more fields as needed
+      );
     }
+  
     return true; // If no search query, show all entries
   }
+  
 
   return (
     <div className="container mt-5">

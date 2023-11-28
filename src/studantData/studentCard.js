@@ -5,20 +5,25 @@ import { useLocation } from "react-router-dom";
 
 
 
-const StudentCard = ({ data }) => {
- 
-  const location = useLocation();
-  const { studentData } = location.state || {};
+const StudentCard = () => {
+  
+const location = useLocation();
+  const studentData = location.state || location.pathname.split("/")[2];
+
  
 
-  useEffect(() => {
-    console.log("StudentData in StudentCard:", studentData);
-  }, [studentData]);
+useEffect(() => {
+  console.log("Location in StudentCard:", location);
+  console.log("StudentData in StudentCard:", studentData);
+}, [location, studentData]);
+  
 
   if (!studentData) {
     // Handle the case where there is no studentData
     return <div>No data available.</div>;
   }
+
+  const displayData = studentData
 
   return (
     <div className="container mt-5">
@@ -28,35 +33,35 @@ const StudentCard = ({ data }) => {
           <div className="row">
             <div className="col-md-4">
               <img
-                src={studentData.profilePicture || "default-profile-picture.jpg"}
+                src={displayData.profilePicture || "default-profile-picture.jpg"}
                 alt="Profile"
                 className="img-fluid rounded"
               />
             </div>
             <div className="col-md-8">
               <Card.Title>
-                {studentData.fName} {studentData.lName}
+                {displayData.fName} {displayData.lName}
               </Card.Title>
               <Card.Text>
-                <strong>Email:</strong> {studentData.email}
+                <strong>Email:</strong> {displayData.email}
               </Card.Text>
               <Card.Text>
-                <strong>Class:</strong> {studentData.class}
+                <strong>Class:</strong> {displayData.class}
               </Card.Text>
               <Card.Text>
-                <strong>Grade:</strong> {studentData.grade}
+                <strong>Grade:</strong> {displayData.grade}
               </Card.Text>
               <Card.Text>
-                <strong>Phone:</strong> {studentData.phone}
+                <strong>Phone:</strong> {displayData.phone}
               </Card.Text>
               <Card.Text>
                 <strong>Birthdate:</strong>{" "}
-                {studentData.birthdate instanceof Date
-                  ? studentData.birthdate.toLocaleDateString()
-                  : studentData.birthdate}
+                {displayData.birthdate instanceof Date
+                  ? displayData.birthdate.toLocaleDateString()
+                  : displayData.birthdate}
               </Card.Text>
               <Card.Text>
-                <strong>Gender:</strong> {studentData.gender}
+                <strong>Gender:</strong> {displayData.gender}
               </Card.Text>
             </div>
           </div>
