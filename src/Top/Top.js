@@ -2,17 +2,30 @@ import React from 'react';
 import { useState } from 'react';
 import YourFormComponent from '../Form/Form';
 import 'font-awesome/css/font-awesome.min.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Top() {
 
     const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
 
     const handleSearch = (e) => {
-        // Update the searchQuery state with the input value
         setSearchQuery(e.target.value);
+        console.log("searchQuery", e.target.value);
     };
+
+    const handleSearchSubmit = () => {
+        navigate(`/table?search=${encodeURIComponent(searchQuery)}`);
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchSubmit();
+        }
+    };
+
+
     return (
         <>
             <div className="bg-dark mt-0 ">
@@ -28,14 +41,14 @@ function Top() {
                         </div>
                         <div className="col-4 gary-color">
                             <marquee>This text will scroll from right to left</marquee>
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-6">
                                     <marquee direction="up">This text up</marquee>
                                 </div>
                                 <div className="col-6">
                                     <marquee direction="down">This text down</marquee>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="col-2">
                             <i className="fa fa-facebook bg-white them-color p-2 rounded-circle"></i>
@@ -46,7 +59,7 @@ function Top() {
                     </div>
                 </div>
             </div>
-            <header className="header-area header-sticky"style={{ background: 'linear-gradient(to right, #ff8c00, #ff0080)' }}>
+            <header className="header-area header-sticky" style={{ background: 'linear-gradient(to right, #ff8c00, #ff0080)' }}>
                 <div className="row ">
                     <nav className="navbar navbar-expand-lg navbar-light">
                         <a className="navbar-brand" href="index.html">
@@ -91,8 +104,8 @@ function Top() {
                                     </Link>
                                 </li>
                             </ul>
-                            <div className="ml-auto mt-1">
-                                {/* <form className="form-inline" onSubmit={handleSearch}> */}
+                            <div className="row ml-auto mt-1">
+
                                 <input
                                     className="form-control mr-sm-2"
                                     type="search"
@@ -100,8 +113,13 @@ function Top() {
                                     aria-label="Search"
                                     value={searchQuery}
                                     onChange={handleSearch}
+                                    onKeyPress={handleKeyPress}
                                 />
-                                {/* </form> */}
+                                <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleSearchSubmit}>
+                                    Search
+                                </button>
+
+
                             </div>
                         </div>
                     </nav>

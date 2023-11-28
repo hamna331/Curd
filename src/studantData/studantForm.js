@@ -274,7 +274,7 @@ const FormComponent = ({ formData, setFormData }) => {
                     <div className="row justify-content-center">
                         <div className="col-lg-6 col-md-6 col-sm-12">
                             <button type="submit" className="btn btn-primary w-100">
-                                <p>{editIndex !== null ? "Update" : "Submit"}</p>
+                                <p>{index !== null ? "Update" : "Submit"}</p>
                             </button>
                         </div>
                     </div>

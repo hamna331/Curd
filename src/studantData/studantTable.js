@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 
-const TableComponent = ({  searchQuery }) => {
+const TableComponent = () => {
   const [formData, setFormData] = useState([])
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchQuery = new URLSearchParams(location.search).get('search');
+
 
   useEffect(() => {
+    console.log("Search query in TableComponent:", searchQuery);
+ 
     const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
     console.log("==========>",savedFormData);
     setFormData(savedFormData);
@@ -28,12 +33,23 @@ const TableComponent = ({  searchQuery }) => {
     console.log(index);
   };
 
-  const filterNames = (name) => {
-    if (searchQuery && name) {
-      return name.toLowerCase().includes(searchQuery.toLowerCase());
-    }
-    return false;
+  const handleView = (index) => {
+    const studentData = formData[index];
+    // Pass the student data to the StudentCard route
+    navigate(`/student-card/${index}`, { state: { studentData } });
   };
+  
+
+  const filteredData = formData.filter((data) => filterNames(data.fName));
+
+  function filterNames(name) {
+    const currentSearchQuery = new URLSearchParams(location.search).get('search');
+  
+    if (currentSearchQuery && name) {
+      return name.toLowerCase().includes(currentSearchQuery.toLowerCase());
+    }
+    return true; // If no search query, show all entries
+  }
 
   return (
     <div className="container mt-5">
@@ -53,7 +69,7 @@ const TableComponent = ({  searchQuery }) => {
           </tr>
         </thead>
         <tbody>
-          {formData
+          {filteredData
          
             .map((data, index) => (
               <tr key={index}>
@@ -70,9 +86,13 @@ const TableComponent = ({  searchQuery }) => {
                 </td>
                 <td className="text-center">{data.gender}</td>
                 <td className="row text-center">
-                  <Link to={`/student-card/${index}`} className="btn btn-primary me-2">
-                    View
-                  </Link>
+                <Link
+                  to={`/student-card/${index}`}
+                  className="btn btn-primary me-2"
+                  onClick={() => handleView(index)} // Call handleView on button click
+                >
+                  View
+                </Link>
                   <button
                     className="btn btn-danger me-2"
                     onClick={() => deleteEntry(index)}

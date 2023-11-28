@@ -7,7 +7,8 @@ import YourFormComponent from './Form/Form';
 import Home from './Home/Home';
 import FormComponent from './studantData/studantForm';
 import TableComponent from './studantData/studantTable';
-import studentCard from './studantData/studentCard';
+import StudentCard from './studantData/studentCard';
+
 
 const App = () => {
   const [formData, setFormData] = useState([]);
@@ -22,7 +23,8 @@ const App = () => {
         <Route path="/form" element={<FormComponent formData={formData} setFormData={setFormData} />} />
         {/* Use the :index parameter in the route to pass it to FormComponent */}
         <Route path="/edit/:index" element={<FormComponent formData={formData} setFormData={setFormData} />} />
-        <Route path="/card" element={<studentCard />} />
+        <Route path="/student-card/:index" element={<StudentCard />} />
+
       </Routes>
     </Router>
   );
