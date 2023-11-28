@@ -1,6 +1,9 @@
 .carousel-item {
     position: relative;
   }
+  .btn{
+    border-style: none;
+  }
   
   .carousel-item::after {
     content: "";
@@ -145,6 +148,41 @@
         font-size: 14px !important;
     }
   }
+ 
+  @keyframes fadeInRight {
+    from {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 2;
+      transform: translateX(0);
+    }
+  }
+  
+  .animated {
+    animation-name: fadeInRight;
+    animation-duration: 2s;
+    animation-fill-mode:both;
+  }
+  
+/* @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animated {
+    animation-name: fadeInDown;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+   */
   /* Home.css */
   
                 /* TESTIMONIALS */
@@ -252,12 +290,13 @@
 }
 
 .services-item:hover .services-content-icon i {
-    color: var(--bs-secondary) !important;
+    color: var(--bs-success) !important;
 }
 
 .services-item:hover .services-content-icon p {
     color: var(--bs-white);
 }
+
   
                   
                 

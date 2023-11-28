@@ -6,6 +6,7 @@ import team4Img from '../assets/asdf1.jpg';
 import Testimonials from './Testimonials';
 import About from './About';
 import Services from './Services';
+import Project from './Project';
 
 
 const Home = () => {
@@ -72,6 +73,7 @@ const Home = () => {
       <Testimonials/>
       <About/>
       <Services/>
+      <Project/>
     </>
   );
 };
