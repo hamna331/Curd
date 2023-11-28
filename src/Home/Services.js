@@ -3,6 +3,46 @@ import '../Home/Home.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode,faFileCode,faExternalLinkAlt ,faUserSecret,faEnvelopeOpen,faLaptop} from '@fortawesome/free-solid-svg-icons';
 
+let common = [
+    {
+        icon: faCode,
+        title1: "Web Design",
+        title2: "Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.",
+        btn: "Read More"
+    },
+    {
+        icon: faFileCode,
+        title1: "Web Development",
+        title2: "Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.",
+        btn: "Read More"
+    },
+    {
+        icon: faExternalLinkAlt,
+        title1: "UI/UX Design",
+        title2: "Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.",
+        btn: "Read More"
+    },
+    {
+        icon: faUserSecret,
+        title1: "Web Cecurity",
+        title2: "Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.",
+        btn: "Read More"
+    },
+    {
+        icon: faEnvelopeOpen,
+        title1: "Digital Marketing",
+        title2: "Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.",
+        btn: "Read More",
+    },
+    {
+        icon: faLaptop,
+        title1: "Programming",
+        title2: "Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.",
+        btn: "Read More"
+    }
+];
+
+
 
 function Services() {
   return (
@@ -13,80 +53,19 @@ function Services() {
           <h1 className='fw-bold'>Services Built Specifically <br />For Your Business</h1>
         </div>
         <div className="row g-5 services-inner">
-        <div className=" col-lg-4 wow fadeIn" data-wow-delay=".5s">
+      { common.map((value,index) =>  (
+        <div key={index} className=" col-lg-4 wow fadeIn" data-wow-delay=".5s">
                 <div className="services-item bg-light">
                     <div className="p-4 text-center services-content">
                         <div className="services-content-icon">
-                        <i className=" fa-7x mb-4 text-primary"><FontAwesomeIcon icon={faCode} /></i>
-                            <h4 className="mb-3">Web Design</h4>
-                            <p className="mb-4">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.</p>
-                            <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">Read More</a>
+                        <i className=" fa-7x mb-4 text-primary"><FontAwesomeIcon icon={value.icon} /></i>
+                            <h4 className="mb-3">{value.title1}</h4>
+                            <p className="mb-4">{value.title2}</p>
+                            <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">{value.btn}</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className=" col-lg-4 wow fadeIn" data-wow-delay=".5s">
-                <div className="services-item bg-light">
-                    <div className="p-4 text-center services-content">
-                        <div className="services-content-icon">
-                        <i className=" fa-7x mb-4 text-primary"><FontAwesomeIcon icon={faFileCode} /></i>
-                            <h4 className="mb-3">Web Development</h4>
-                            <p className="mb-4">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.</p>
-                            <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className=" col-lg-4 wow fadeIn" data-wow-delay=".7s">
-                <div className="services-item bg-light">
-                    <div className="p-4 text-center services-content">
-                        <div className="services-content-icon">
-                        <i className=" fa-7x mb-4 text-primary"><FontAwesomeIcon icon={faExternalLinkAlt} /></i>
-                            <h4 className="mb-3">UI/UX Design</h4>
-                            <p className="mb-4">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.</p>
-                            <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className=" col-lg-4 wow fadeIn" data-wow-delay=".3s">
-                <div className="services-item bg-light">
-                    <div className="p-4 text-center services-content">
-                        <div className="services-content-icon">
-                        <i className=" fa-7x mb-4 text-primary"> <FontAwesomeIcon icon={faUserSecret} /></i>
-                            <h4 className="mb-3">Web Cecurity</h4>
-                            <p className="mb-4">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.</p>
-                            <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">Read More</a>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div className=" col-lg-4 wow fadeIn" data-wow-delay=".5s">
-                <div className="services-item bg-light">
-                    <div className="p-4 text-center services-content">
-                        <div className="services-content-icon">
-                        <i className=" fa-7x mb-4 text-primary"> <FontAwesomeIcon icon={faEnvelopeOpen} /></i>
-                            <h4 className="mb-3">Digital Marketing</h4>
-                            <p className="mb-4">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.</p>
-                            <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className=" col-lg-4 wow fadeIn" data-wow-delay=".7s">
-                <div className="services-item bg-light">
-                    <div className="p-4 text-center services-content">
-                        <div className="services-content-icon">
-                            <i className=" fa-7x mb-4 text-primary"><FontAwesomeIcon icon={faLaptop} />
-</i>
-                            <h4 className="mb-3">Programming</h4>
-                            <p className="mb-4">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Aliquam dolor eget urna ultricies tincidunt.</p>
-                            <a href="" className="btn btn-success text-white px-5 py-3 rounded-pill">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>))}
         </div>
     </div>
 </div>
