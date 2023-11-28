@@ -296,7 +296,12 @@
 .services-item:hover .services-content-icon p {
     color: var(--bs-white);
 }
-
+.btn-success:hover{
+  background: rgb(4, 71, 28);
+}
+.text-primary{
+  color:aqua;
+}
   
                   
                 
