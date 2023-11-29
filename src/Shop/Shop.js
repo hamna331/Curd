@@ -1,21 +1,39 @@
+<<<<<<< HEAD
+import React, { useState } from "react";
+import "../Shop/shop.css";
+=======
 import React, { useState } from "react"; import "../Shop/shop.css";
+>>>>>>> 7de8129e691e7a9c1b8c25131569dda2c8e4a4ab
 import wom from "../assets/team-3.jpg";
 import man from "../assets/team-2.jpg";
-import kid from '../images/img4.jpg'
-import Sdata from '../Shop/Shoplist'
+import kid from "../images/img4.jpg";
+import Sdata from "../Shop/Shoplist";
 import { NavLink } from "react-router-dom"; // Import NavLink from react-router-dom
 import { Link, useHistory } from "react-router-dom";
 
 
 function Shop() {
   const [categoryFilter, setCategoryFilter] = useState("all"); // Initialize state for category filtering
+<<<<<<< HEAD
+  const [clicked, setClicked] = useState(false);
+=======
 
   const handleCategoryFilter = (category) => {
     setCategoryFilter(category); // Update category filter state
   };
 
   const filteredData = categoryFilter === "all" ? Sdata : Sdata.filter(item => item.category === categoryFilter);
+>>>>>>> 7de8129e691e7a9c1b8c25131569dda2c8e4a4ab
 
+  const handleCategoryFilter = (category) => {
+    setCategoryFilter(category); // Update category filter state
+    setClicked(!clicked);
+  };
+
+  const filteredData =
+    categoryFilter === "all"
+      ? Sdata
+      : Sdata.filter((item) => item.category === categoryFilter);
   return (
     <div>
       <div className="container mt-60">
@@ -72,7 +90,6 @@ function Shop() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

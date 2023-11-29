@@ -25,7 +25,6 @@ const App = () => {
         <Route path="/edit/:index" element={<FormComponent formData={formData} setFormData={setFormData} />} />
         <Route path="/student-card/:index" element={<StudentCard />} />
 
-
       </Routes>
     </Router>
   );
