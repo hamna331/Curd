@@ -1,29 +1,19 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useState } from "react";
+import { useEffect, } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import { useParams } from "react-router";
 
 
 
 const StudentCard = () => {
-  
-const location = useLocation();
-  const studentData = location.state || location.pathname.split("/")[2];
+  const { index } = useParams();
+  const [displayData, setStudentData] = useState({})
 
- 
-
-useEffect(() => {
-  console.log("Location in StudentCard:", location);
-  console.log("StudentData in StudentCard:", studentData);
-}, [location, studentData]);
-  
-
-  if (!studentData) {
-    // Handle the case where there is no studentData
-    return <div>No data available.</div>;
-  }
-
-  const displayData = studentData
+  useEffect(() => {
+    const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
+    setStudentData(savedFormData[index])
+  }, [index]);
 
   return (
     <div className="container mt-5">
