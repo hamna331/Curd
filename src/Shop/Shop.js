@@ -10,11 +10,12 @@ import { Link, useHistory } from "react-router-dom";
 
 function Shop() {
   const [categoryFilter, setCategoryFilter] = useState("all"); // Initialize state for category filtering
+  const [clicked, setClicked] = useState(false);
 
   const handleCategoryFilter = (category) => {
     setCategoryFilter(category); // Update category filter state
+    setClicked(!clicked);
   };
-
 
   const filteredData =
     categoryFilter === "all"
