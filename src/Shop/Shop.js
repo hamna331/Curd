@@ -14,16 +14,7 @@ import { Link, useHistory } from "react-router-dom";
 
 function Shop() {
   const [categoryFilter, setCategoryFilter] = useState("all"); // Initialize state for category filtering
-<<<<<<< HEAD
   const [clicked, setClicked] = useState(false);
-=======
-
-  const handleCategoryFilter = (category) => {
-    setCategoryFilter(category); // Update category filter state
-  };
-
-  const filteredData = categoryFilter === "all" ? Sdata : Sdata.filter(item => item.category === categoryFilter);
->>>>>>> 7de8129e691e7a9c1b8c25131569dda2c8e4a4ab
 
   const handleCategoryFilter = (category) => {
     setCategoryFilter(category); // Update category filter state
