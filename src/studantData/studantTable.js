@@ -34,11 +34,7 @@ const TableComponent = () => {
   };
 
   const handleView = (index) => {
-    const studentData = formData[index];
-    console.log("StudentData before navigating:", studentData);
-  
-    // Use navigate to pass data as state
-    navigate(`/student-card/${index}`, { state: { studentData } });
+    navigate(`/student-card/${index}`);
   };
   
   
@@ -99,13 +95,18 @@ const TableComponent = () => {
                 </td>
                 <td className="text-center">{data.gender}</td>
                 <td className="row text-center">
-                <Link
-                  to={`/student-card/${index}`}
+                {/* <Link
                   className="btn btn-primary me-2"
                   onClick={() => handleView(index)} // Call handleView on button click
                 >
                   View
-                </Link>
+                </Link> */}
+                 <button
+                    className="btn btn-warning"
+                    onClick={() => handleView(index)}
+                  >
+                    View
+                  </button>
                   <button
                     className="btn btn-danger me-2"
                     onClick={() => deleteEntry(index)}
