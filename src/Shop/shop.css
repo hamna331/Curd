@@ -1,0 +1,23 @@
+.image{
+    width: 170px;
+    height: 190px;
+}
+.images-fluid h2{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    justify-content: center;
+    /* margin-right: 69px; */
+}
+.image-fluid-1{
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    /* margin-left: 30px; */
+    }
+    .row img{
+        margin-bottom: 0px;
+        /* margin-top: 30px; */
+    }
+    .btn{
+        margin-right: 80px;
+    }
