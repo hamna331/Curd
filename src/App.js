@@ -8,6 +8,8 @@ import Home from './Home/Home';
 import FormComponent from './studantData/studantForm';
 import TableComponent from './studantData/studantTable';
 import StudentCard from './studantData/studentCard';
+import Shop from './Shop/Shop';
+import Shopitem from './Shop/Shopitem';
 
 
 const App = () => {
@@ -24,6 +26,10 @@ const App = () => {
         {/* Use the :index parameter in the route to pass it to FormComponent */}
         <Route path="/edit/:index" element={<FormComponent formData={formData} setFormData={setFormData} />} />
         <Route path="/student-card/:index" element={<StudentCard />} />
+        <Route path="/shop" element={<Shop/>} />
+        <Route path="/shopItem/:Id" element={<Shopitem />} />
+
+
 
       </Routes>
     </Router>
