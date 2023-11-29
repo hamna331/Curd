@@ -27,6 +27,7 @@ const App = () => {
         <Route path="/student-card/:index" element={<StudentCard />} />
         
          <Route path="/shop" element={<Shop/>} />
+         <Route path="/shopItem/:Id" component={ShopItem} />
 
       </Routes>
     </Router>
