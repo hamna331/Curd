@@ -28,162 +28,189 @@ import img27 from '../images/img8.jpg'
 
 const Sdata =[
     {
+        id: 1001,
         imgsrc:img1,
         title : "Balancia Electronic weight",
         category:"man",
         btn : "view"
     },
     {
+        id: 1002,
         imgsrc:img2,
         title : "Header",
         category:"man",
         btn : "view"
     },
     {
+        id: 1003,
         imgsrc:img3,
         title : "anti-agging-cream",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1004,
         imgsrc:img4,
         title : "anti-wrinkle",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1005,
         imgsrc:img5,
         title : "bag",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1006,
         imgsrc:img6,
         title : "cold-cream",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1007,
         imgsrc:img7,
         title : "consumer-electronic",
         category:"man",
         btn : "view"
     },
     {
+        id: 1008,
         imgsrc:img8,
         title : "conventional",
         category:"man",
         btn : "view"
     },
     {
+        id: 1009,
         imgsrc:img9,
         title : "electronic",
         category:"man",
         btn : "view"
     },
     {
+        id: 1010,
         imgsrc:img10,
         title : "engine",
         category:"man",
         btn : "view"
     },
     {
+        id: 1011,
         imgsrc:img11,
         title : "foot-care",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1012,
         imgsrc:img12,
         title : "glow-up",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1013,
         imgsrc:img13,
         title : "hardware",
         category:"man",
         btn : "view"
     },
     {
+        id: 1014,
         imgsrc:img14,
         title : "herbal-cream",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1015,
         imgsrc:img15,
         title : "pit-cream",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1016,
         imgsrc:img16,
         title : "recycling",
         category:"man",
         btn : "view"
     },
     {
+        id: 1017,
         imgsrc:img17,
         title : "vanishing",
         category:"man",
         btn : "view"
     },
     {
+        id: 1018,
         imgsrc:img18,
         title : "white-glow",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1019,
         imgsrc:img19,
         title : "world-skill",
         category:"woman",
         btn : "view"
     },
     {
+        id: 1020,
         imgsrc:img20,
         title : "baby-toye",
         category:"kid",
         btn : "view"
     },
     {
+        id: 1021,
         imgsrc:img21,
         title : "baby-toye",
         category:"kid",
         btn : "view"
     },
     {
+        id: 1022,
         imgsrc:img22,
         title : "baby-toye",
         category:"kid",
         btn : "view"
     },
     {
+        id: 1023,
         imgsrc:img23,
         title : "baby-toye",
         category:"kid",
         btn : "view"
     },
     {
+        id: 1024,
         imgsrc:img24,
         title : "baby-toye",
         category:"kid",
         btn : "view"
     },
     {
+        id: 1025,
         imgsrc:img25,
         title : "baby-toye",
         category:"kid",
         btn : "view"
     },
     {
+        id: 1026,
         imgsrc:img26,
         title : "bay-toys",
         category:"kid",
         btn : "view"
     },
     {
+        id: 1027,
         imgsrc:img26,
         title : "bay-toys",
         category:"kid",
