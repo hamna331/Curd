@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import "../Shop/shop.css";
-=======
-import React, { useState } from "react"; import "../Shop/shop.css";
->>>>>>> 7de8129e691e7a9c1b8c25131569dda2c8e4a4ab
 import wom from "../assets/team-3.jpg";
 import man from "../assets/team-2.jpg";
 import kid from "../images/img4.jpg";
