@@ -103,6 +103,11 @@ function Top() {
                                         Your Form
                                     </Link>
                                 </li>
+                                <li className="nav-item ms-3">
+                                    <Link to="/shop" style={{ color: 'black', textDecoration: 'none' }}>
+                                       Shop
+                                    </Link>
+                                </li>
                             </ul>
                             <div className="row ml-auto mt-1">
 
