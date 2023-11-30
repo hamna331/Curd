@@ -93,17 +93,17 @@ function Top() {
                                         Table
                                     </Link>
                                 </li>
-                                <li className="nav-item" style={{ marginRight: '15px' }}>
-                                    <Link to="/card" style={{ color: 'black', textDecoration: 'none' }}>
-                                        Card
+                                {/* <li className="nav-item" style={{ marginRight: '15px' }}>
+                                    <Link to="/Facts" style={{ color: 'black', textDecoration: 'none' }}>
+                                        Facts
                                     </Link>
-                                </li>
-                                <li className="nav-item">
+                                </li> */}
+                                {/* <li className="nav-item">
                                     <Link to="/yourForm" style={{ color: 'black', textDecoration: 'none' }}>
                                         Your Form
                                     </Link>
-                                </li>
-                                <li className="nav-item ms-3">
+                                </li> */}
+                                <li className="nav-item ms-0">
                                     <Link to="/shop" style={{ color: 'black', textDecoration: 'none' }}>
                                        Shop
                                     </Link>
