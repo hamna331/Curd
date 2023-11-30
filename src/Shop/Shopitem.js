@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Sdata from '../Shop/Shoplist';
+import Sdata from '../Shop/list';
 
 function ShopItem() {
   const { Id } = useParams();

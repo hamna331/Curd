@@ -3,7 +3,7 @@ import "../Shop/shop.css";
 import wom from "../assets/team-3.jpg";
 import man from "../assets/team-2.jpg";
 import kid from "../images/img4.jpg";
-import Sdata from "../Shop/Shoplist";
+import Sdata from "../Shop/list";
 import { NavLink } from "react-router-dom"; // Import NavLink from react-router-dom
 import { Link, useHistory } from "react-router-dom";
 
