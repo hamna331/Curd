@@ -68,7 +68,13 @@ function Shop() {
                 <img src={val.imgsrc} alt={val.title} className="image-fluid-1" />
                 <div className="p-4 text-center services-content ">
                   <h4 className="mb-3">{val.title}</h4>
-                  <Link to={`/shopItem/${val.id}`} className="btn btn-success text-white px-5 py-3 rounded-pill">
+                  <Link
+                    to={{
+                      pathname: `/shopItem/${val.id}`,
+                      state: { item: val }, // Pass the item data as state
+                    }}
+                    className="btn btn-success text-white px-5 py-3 rounded-pill"
+                  >
                     {val.btn}
                   </Link>
                 </div>
