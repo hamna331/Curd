@@ -24,7 +24,26 @@ const FormComponent = ({ formData, setFormData }) => {
   const formRef = useRef();
   const { index } = useParams();
 
-  
+  // Save form data to local storage and update state
+  //   const saveToLocalStorage = (values) => {
+  //     let updatedFormData = [...formData];
+  //     if (editIndex !== null) {
+  //       // If editIndex is not null, update the existing entry
+  //       updatedFormData[editIndex] = values;
+  //     } else {
+  //       // If editIndex is null, add a new entry
+  //       updatedFormData = [...updatedFormData, values];
+  //     }
+
+  //     localStorage.setItem("formData", JSON.stringify(updatedFormData));
+  //     setFormData(updatedFormData);
+  //     setEditIndex(null);
+
+  //     // Reset the form
+  //     formRef.current.resetForm();
+  //   };
+
+  // Populate form with data if editing an existing entry
   useEffect(() => {
     // Load saved form data from local storage on component mount
     const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
@@ -270,57 +289,56 @@ const FormComponent = ({ formData, setFormData }) => {
                         <h5>Birthdate</h5>
                       </label>
                       <div
-  className="input-group"
-  style={{
-    position: "relative",
-  }}
->
-  <DatePicker
-    selected={formik.values.birthdate}
-    onChange={(date) => formik.setFieldValue("birthdate", date)}
-    dateFormat="MM/dd/yyyy"
-    className="form-control"
-    popperPlacement="top-end"
-    popperModifiers={{
-      offset: {
-        enabled: true,
-        offset: "5px, 10px",
-      },
-      preventOverflow: {
-        enabled: true,
-        escapeWithReference: false,
-        boundariesElement: "viewport",
-      },
-    }}
-    customInput={
-      <input
-        type="text"
-        id="birthdate"
-        name="birthdate"
-        value={formik.values.birthdate}
-        onChange={(e) => formik.setFieldValue("birthdate", e.target.value)}
-        placeholder="MM/dd/yyyy"
-        className="form-control"
-        style={{
-          paddingRight: "30px", // Adjust padding to accommodate the calendar icon
-        }}
-      />
-    }
-    calendarContainer={document.getElementsByClassName("input-group")[0]}
-  />
-  <span
-    style={{
-      position: "absolute",
-      right: "10px", // Adjust the position as needed
-      top: "50%",
-      transform: "translateY(-50%)",
-      zIndex: "999",
-    }}
-  >
-    <BsCalendar />
-  </span>
-</div>
-
+                        className="input-group"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          position: "relative",
+                        }}
+                      >
+                        <DatePicker
+                          selected={formik.values.birthdate}
+                          onChange={(date) =>
+                            formik.setFieldValue("birthdate", date)
+                          }
+                          dateFormat="MM/dd/yyyy"
+                          className="form-control"
+                          customInput={
+                            <span
+                              style={{
+                                position: "absolute",
+                                right: "-380px",
+                                transform: "translateY(-70%)", // Position above the input group
+                              }}
+                            >
+                              <BsCalendar />
+                            </span>
+                          }
+                          popperPlacement="top-end" // Set the popper placement to top-end
+                          popperModifiers={{
+                            offset: {
+                              enabled: true,
+                              offset: "5px, 10px", // Adjust the offset as needed
+                            },
+                            preventOverflow: {
+                              enabled: true,
+                              escapeWithReference: false,
+                              boundariesElement: "viewport",
+                            },
+                          }}
+                        />
+                        <input
+                          type="text"
+                          id="birthdate"
+                          name="birthdate"
+                          value={formik.values.birthdate}
+                          onChange={(e) =>
+                            formik.setFieldValue("birthdate", e.target.value)
+                          }
+                          placeholder="MM/dd/yyyy"
+                          className="form-control"
+                        />
+                      </div>
 
                       <ErrorMessage
                         name="birthdate"
