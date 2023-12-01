@@ -30,7 +30,7 @@ function Top() {
 
     return (
         <>
-            <div className="bg-dark">
+            <div className="bg-dark  text-white">
                 <div className="container-fluid py-2">
                     <div className="row text-center">
                         <div className="col-3">
@@ -46,7 +46,13 @@ function Top() {
                             <span className="gary-color">+92-333-6206009</span>
                         </div>
                         <div className="col-3 gary-color">
-                            <marquee>BitsBuffer</marquee>
+                            <div className="marquee-container">
+                                <div className="marquee" data-direction="up">
+                                    <div className="inner-marquee" data-direction="alternate">
+                                        BitsBuffer
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="col-2">
                             <i className="fa fa-facebook bg-white them-color p-2 rounded-circle"></i>
@@ -57,10 +63,10 @@ function Top() {
                     </div>
                 </div>
             </div>
-            <nav className="ps-3 bg-color navbar navbar-expand-lg ">
+            <nav className="ps-3 nav-bg-color navbar navbar-expand-lg ">
                 <a className="navbar-brand" href="index.html">
-                    <img src={icon} alt="icon"  style={{width:"30px" , height:"30px"}} className='m-2 icon tada'/>
-                    <img src={logo} alt="logo" style={{width:"75px" , height:"30px"}} className='m-2 logo'/>
+                    <img src={icon} alt="icon" style={{ width: "30px", height: "30px" }} className='m-2 icon tada' />
+                    <img src={logo} alt="logo" style={{ width: "75px", height: "30px" }} className='m-2 logo' />
                 </a>
                 <button
                     className="navbar-toggler"
@@ -76,12 +82,12 @@ function Top() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav mx-auto" style={{ textDecoration: 'none', listStyle: 'none', display: 'flex', alignItems: 'center' }}>
                         <li className="nav-item active" style={{ marginRight: '15px' }}>
-                            <Link to="/"  className='style-non'>
+                            <Link to="/" className='style-non'>
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item" style={{ marginRight: '15px' }}>
-                            <Link to="/form"className='style-non'>
+                            <Link to="/form" className='style-non'>
                                 Form
                             </Link>
                         </li>
@@ -110,7 +116,7 @@ function Top() {
                 </div>
                 <div className="d-flex text-end">
                     <input
-                        className="form-control"
+                        className="form-control search-input "
                         type="search"
                         placeholder="Search"
                         aria-label="Search"
@@ -118,7 +124,7 @@ function Top() {
                         onChange={handleSearch}
                         onKeyPress={handleKeyPress}
                     />
-                    <button className="btn m-0 mx-2" onClick={handleSearchSubmit}>
+                    <button className="btn btn-search m-0 mx-2" onClick={handleSearchSubmit}>
                         Search
                     </button>
                 </div>

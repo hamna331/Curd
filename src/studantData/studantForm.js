@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BsFillCaretDownFill, BsCalendar } from "react-icons/bs";
 import { useParams } from "react-router";
+import "./student.css"
 
 // Validation schema for form fields
 const validationSchema = Yup.object().shape({
@@ -63,7 +64,7 @@ const FormComponent = ({ formData, setFormData }) => {
 
     return (
         <>
-            <div className="container bg-light p-3">
+            <div className="container student-bg-color my-5 p-4">
                 <Formik
                     innerRef={formRef}
                     initialValues={{
@@ -111,8 +112,8 @@ const FormComponent = ({ formData, setFormData }) => {
                     {(formik) => (
                         <Form>
                             <div className="row">
-                                {/* Profile Picture */}
-                                <div className="col-lg-3 col-md-6 col-sm-12">
+                                <div className="col-lg-4 col-md-6 col-sm-12 h-25">
+                                    {/* Profile Picture */}
                                     <label htmlFor="profilePicture" className="fw-bold form-label">
                                         <h5>Profile Picture</h5>
                                     </label>
@@ -140,126 +141,128 @@ const FormComponent = ({ formData, setFormData }) => {
                                             style={{ width: "100%", height: "auto" }}
                                         />
                                     )}
+
                                 </div>
-                            </div>
-                            <div className="row">
-                                {/* Basic Information */}
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <label htmlFor="fName" className="form-label">
-                                        <h5>First Name</h5>
-                                    </label>
-                                    <Field type="text" className="form-control" id="fName" name="fName" />
-                                    <ErrorMessage name="fName" component="div" className="text-danger" />
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <label htmlFor="lName" className="form-label">
-                                        <h5>Last Name</h5>
-                                    </label>
-                                    <Field type="text" className="form-control" id="lName" name="lName" />
-                                    <ErrorMessage name="lName" component="div" className="text-danger" />
-                                </div>
-                                {/* Additional Information */}
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <label htmlFor="email" className="form-label">
-                                        <h5>Email</h5>
-                                    </label>
-                                    <Field type="text" className="form-control" id="email" name="email" />
-                                    <ErrorMessage name="email" component="div" className="text-danger" />
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <label htmlFor="class" className="form-label">
-                                        <h5>Class</h5>
-                                    </label>
-                                    <Field type="text" className="form-control" id="class" name="class" />
-                                    <ErrorMessage name="class" component="div" className="text-danger" />
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <label htmlFor="grade" className="form-label">
-                                        <h5>Grade</h5>
-                                    </label>
-                                    <Field type="text" className="form-control" id="grade" name="grade" />
-                                    <ErrorMessage name="grade" component="div" className="text-danger" />
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <label htmlFor="phone" className="form-label">
-                                        <h5>Phone Number</h5>
-                                    </label>
-                                    <Field type="text" className="form-control" id="phone" name="phone" />
-                                    <ErrorMessage name="phone" component="div" className="text-danger" />
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <label htmlFor="birthdate" className="form-label">
-                                        <h5>Birthdate</h5>
-                                    </label>
-                                    <div className="input-group" style={{ display: "flex", alignItems: "center" }}>
-                                        <DatePicker
-                                            id="birthdate"
-                                            name="birthdate"
-                                            selected={formik.values.birthdate}
-                                            onChange={(date) => formik.setFieldValue("birthdate", date)}
-                                            dateFormat="MM/dd/yyyy"
-                                            className="form-control"
-                                            customInput={<input className="form-control" />}
-                                        />
-                                        <span className="d-flex align-items-center mb-2 " style={{ position: "absolute", left: "180px" }}>
-                                            <BsCalendar />
-                                        </span>
-                                    </div>
-                                    <ErrorMessage name="birthdate" component="div" className="text-danger" />
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <label htmlFor="country" className="form-label">
-                                        <h5>Country</h5>
-                                    </label>
-                                    <Field
-                                        as="select"
-                                        id="country"
-                                        name="country"
-                                        className="form-select"
-                                        append={
-                                            <label htmlFor="country" className="input-group-text bg-white border-start-0">
-                                                <BsFillCaretDownFill />
+                                <div className="col-lg-8 col-md-12 col-sm-12">
+                                    <div className="row">
+                                        {/* Basic Information */}
+                                        <div className="col-lg-6 col-md-6 col-sm-12">
+                                            <label htmlFor="fName" className="form-label">
+                                                <h5>First Name</h5>
                                             </label>
-                                        }
-                                    >
-                                        <option value="">Select a country</option>
-                                        <option value="USA">United States</option>
-                                        <option value="UK">United Kingdom</option>
-                                        <option value="PK">Pakistan</option>
-                                        <option value="AT">Austria</option>
-                                        <option value="CN">China</option>
-                                        {/* Add more countries as needed */}
-                                    </Field>
-                                    <ErrorMessage name="country" component="div" className="text-danger" />
-                                </div>
-                                <div className="col-lg-2">
-                                    <label className="form-label">
-                                        <h5>Gender</h5>
-                                    </label>
-                                    <div role="group" aria-labelledby="my-radio-group" className="d-flex justify-content-around">
-                                        <label className="text-center">
-                                            <Field type="radio" name="gender" value="male" />
-                                            <p>Male</p>
-                                        </label>
-                                        <label className="text-center">
-                                            <Field type="radio" name="gender" value="female" />
-                                            <p>Female</p>
-                                        </label>
-                                        <label className="text-center">
-                                            <Field type="radio" name="gender" value="other" />
-                                            <p>Other</p>
-                                        </label>
+                                            <Field type="text" className="form-control" id="fName" name="fName" />
+                                            <ErrorMessage name="fName" component="div" className="text-danger" />
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12">
+                                            <label htmlFor="lName" className="form-label">
+                                                <h5>Last Name</h5>
+                                            </label>
+                                            <Field type="text" className="form-control" id="lName" name="lName" />
+                                            <ErrorMessage name="lName" component="div" className="text-danger" />
+                                        </div>
+                                        {/* Additional Information */}
+                                        <div className="col-lg-12 col-md-12 col-sm-12">
+                                            <label htmlFor="email" className="form-label mt-3">
+                                                <h5>Email</h5>
+                                            </label>
+                                            <Field type="text" className="form-control" id="email" name="email" />
+                                            <ErrorMessage name="email" component="div" className="text-danger" />
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12">
+                                            <label htmlFor="class" className="form-label mt-3">
+                                                <h5>Class</h5>
+                                            </label>
+                                            <Field type="text" className="form-control" id="class" name="class" />
+                                            <ErrorMessage name="class" component="div" className="text-danger" />
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12">
+                                            <label htmlFor="grade" className="form-label mt-3">
+                                                <h5>Grade</h5>
+                                            </label>
+                                            <Field type="text" className="form-control" id="grade" name="grade" />
+                                            <ErrorMessage name="grade" component="div" className="text-danger" />
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12">
+                                            <label htmlFor="phone" className="form-label mt-3">
+                                                <h5>Phone Number</h5>
+                                            </label>
+                                            <Field type="text" className="form-control" id="phone" name="phone" />
+                                            <ErrorMessage name="phone" component="div" className="text-danger" />
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12">
+                                            <label htmlFor="country" className="form-label mt-3">
+                                                <h5>Country</h5>
+                                            </label>
+                                            <Field
+                                                as="select"
+                                                id="country"
+                                                name="country"
+                                                className="form-select"
+                                                append={
+                                                    <label htmlFor="country" className="input-group-text bg-white border-start-0">
+                                                        <BsFillCaretDownFill />
+                                                    </label>
+                                                }
+                                            >
+                                                <option value="">Select a country</option>
+                                                <option value="USA">United States</option>
+                                                <option value="UK">United Kingdom</option>
+                                                <option value="PK">Pakistan</option>
+                                                <option value="AT">Austria</option>
+                                                <option value="CN">China</option>
+                                                {/* Add more countries as needed */}
+                                            </Field>
+                                            <ErrorMessage name="country" component="div" className="text-danger" />
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12">
+                                            <label htmlFor="birthdate" className="form-label mt-3">
+                                                <h5>Birthdate</h5>
+                                            </label>
+                                            <div className="input-group" style={{ display: "flex", alignItems: "center" }}>
+                                                <DatePicker
+                                                    id="birthdate"
+                                                    name="birthdate"
+                                                    selected={formik.values.birthdate}
+                                                    onChange={(date) => formik.setFieldValue("birthdate", date)}
+                                                    dateFormat="MM/dd/yyyy"
+                                                    className="form-control"
+                                                    customInput={<input className="form-control" />}
+                                                />
+                                                <span className="d-flex align-items-center" style={{ position: "absolute", left: "180px" }}>
+                                                    <BsCalendar />
+                                                </span>
+                                            </div>
+                                            <ErrorMessage name="birthdate" component="div" className="text-danger" />
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12">
+                                            <label className="form-label mt-3">
+                                                <h5>Gender</h5>
+                                            </label>
+                                            <div role="group" aria-labelledby="my-radio-group" className="d-flex justify-content-around">
+                                                <label className="text-center">
+                                                    <Field type="radio" name="gender" value="male" />
+                                                    <p>Male</p>
+                                                </label>
+                                                <label className="text-center">
+                                                    <Field type="radio" name="gender" value="female" />
+                                                    <p>Female</p>
+                                                </label>
+                                                <label className="text-center">
+                                                    <Field type="radio" name="gender" value="other" />
+                                                    <p>Other</p>
+                                                </label>
+                                            </div>
+                                            <ErrorMessage name="gender" component="div" className="text-danger" />
+                                        </div>
+                                        <div className="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-end">
+                                            <button type="submit" className="btn btn-primary w-25">
+                                                <p>{index !== null ? "Update" : "Submit"}</p>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <ErrorMessage name="gender" component="div" className="text-danger" />
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <button type="submit" className="btn btn-primary w-50">
-                                        <p>{index !== null ? "Update" : "Submit"}</p>
-                                    </button>
-                                </div>
-                            </div>
+
                         </Form>
                     )}
                 </Formik>
