@@ -47,8 +47,7 @@ const FormComponent = ({ formData, setFormData }) => {
     useEffect(() => {
         // Load saved form data from local storage on component mount
         const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
-        setFormData(savedFormData);
-
+        setFormData(savedFormData)
         // If an index is provided in the URL params, populate the form with the corresponding data
         if (index !== undefined && savedFormData[index]) {
             const editedData = savedFormData[index];
@@ -80,10 +79,9 @@ const FormComponent = ({ formData, setFormData }) => {
                     }}
                     validationSchema={validationSchema}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
-                        // Check if editIndex is not null, indicating that we are editing an existing entry
-                        if (index !== null) {
+                        if (index) {
                             // Update the existing entry in the formData array
-                            const updatedFormData = [...formData];
+                            const updatedFormData = formData;
                             updatedFormData[index] = values;
 
                             // Update localStorage and state
@@ -256,7 +254,7 @@ const FormComponent = ({ formData, setFormData }) => {
                                         </div>
                                         <div className="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-end">
                                             <button type="submit" className="btn btn-primary w-25">
-                                                <p>{index !== null ? "Update" : "Submit"}</p>
+                                                <p>{index ? "Update" : "Submit"}</p>
                                             </button>
                                         </div>
                                     </div>

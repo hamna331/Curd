@@ -13,7 +13,7 @@ import Shopitem from './Shop/Shopitem';
 
 
 const App = () => {
-  const [formData, setFormData] = useState([]);
+  const [appFormData, setAppFormData] = useState([]);
 
   return (
     <Router>
@@ -21,10 +21,10 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/yourForm" element={<YourFormComponent />} />
-        <Route path="/table" element={<TableComponent formData={formData} setFormData={setFormData} />} />
-        <Route path="/form" element={<FormComponent formData={formData} setFormData={setFormData} />} />
+        <Route path="/table" element={<TableComponent formData={appFormData} setFormData={setAppFormData} />} />
+        <Route path="/form" element={<FormComponent formData={appFormData} setFormData={setAppFormData} />} />
         {/* Use the :index parameter in the route to pass it to FormComponent */}
-        <Route path="/edit/:index" element={<FormComponent formData={formData} setFormData={setFormData} />} />
+        <Route path="/edit/:index" element={<FormComponent formData={appFormData} setFormData={setAppFormData} />} />
         <Route path="/student-card/:index" element={<StudentCard />} />
         <Route path="/shop" element={<Shop/>} />
         <Route path="/shopItem/:Id" element={<Shopitem />} />

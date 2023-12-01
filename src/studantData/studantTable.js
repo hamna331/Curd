@@ -30,7 +30,6 @@ const TableComponent = () => {
 
   const handleEdit = (index) => {
     navigate(`/edit/${index}`);
-    console.log(index);
   };
 
   const handleView = (index) => {
