@@ -62,225 +62,209 @@ const FormComponent = ({ formData, setFormData }) => {
     }, [setFormData, index]);
 
     return (
-        <Formik
-            innerRef={formRef}
-            initialValues={{
-                fName: "",
-                lName: "",
-                phone: "",
-                email: "",
-                class: "",
-                grade: "",
-                birthdate: "",
-                gender: "",
-                profilePicture: "",
-            }}
-            validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
-                // Check if editIndex is not null, indicating that we are editing an existing entry
-                if (index !== null) {
-                    // Update the existing entry in the formData array
-                    const updatedFormData = [...formData];
-                    updatedFormData[index] = values;
+        <>
+            <div className="container bg-light p-3">
+                <Formik
+                    innerRef={formRef}
+                    initialValues={{
+                        fName: "",
+                        lName: "",
+                        phone: "",
+                        email: "",
+                        class: "",
+                        grade: "",
+                        birthdate: "",
+                        gender: "",
+                        profilePicture: "",
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
+                        // Check if editIndex is not null, indicating that we are editing an existing entry
+                        if (index !== null) {
+                            // Update the existing entry in the formData array
+                            const updatedFormData = [...formData];
+                            updatedFormData[index] = values;
 
-                    // Update localStorage and state
-                    localStorage.setItem("formData", JSON.stringify(updatedFormData));
-                    setFormData(updatedFormData);
-                    setEditIndex(null); // Reset editIndex
+                            // Update localStorage and state
+                            localStorage.setItem("formData", JSON.stringify(updatedFormData));
+                            setFormData(updatedFormData);
+                            setEditIndex(null); // Reset editIndex
 
-                    console.log("Entry updated!");
-                } else {
-                    // If editIndex is null, add a new entry to the formData array
-                    const updatedFormData = [...formData, values];
+                            console.log("Entry updated!");
+                        } else {
+                            // If editIndex is null, add a new entry to the formData array
+                            const updatedFormData = [...formData, values];
 
-                    // Update localStorage and state
-                    localStorage.setItem("formData", JSON.stringify(updatedFormData));
-                    setFormData(updatedFormData);
+                            // Update localStorage and state
+                            localStorage.setItem("formData", JSON.stringify(updatedFormData));
+                            setFormData(updatedFormData);
 
-                    console.log("New entry added!");
-                }
+                            console.log("New entry added!");
+                        }
 
-                resetForm();
-                setSubmitting(false);
+                        resetForm();
+                        setSubmitting(false);
 
-                // After form submission, navigate to the table component
-                navigate("/table");
-            }}
-
-        >
-            {(formik) => (
-                <Form>
-                    {/* Profile Picture */}
-                    <div className="row profile">
-                        <div className="col-lg-3 col-md-6 col-sm-12 mt-5">
-                            <label htmlFor="profilePicture" className="fw-bold">
-                                <h3>Profile Picture</h3>
-                            </label>
-                            <input
-                                type="file"
-                                id="profilePicture"
-                                name="profilePicture"
-                                accept="image/*"
-                                onChange={(event) => {
-                                    const file = event.currentTarget.files[0];
-                                    const reader = new FileReader();
-                                    reader.onload = (e) => {
-                                        const imageData = e.target.result;
-                                        formik.setFieldValue("profilePicture", imageData);
-                                    };
-                                    reader.readAsDataURL(file);
-                                }}
-                            />
-                            {formik.values.profilePicture && (
-                                <img
-                                    className="d-flex justify-content-start"
-                                    src={formik.values.profilePicture}
-                                    alt="Profile"
-                                    style={{ width: "100%", height: "auto" }}
-                                />
-                            )}
-                        </div>
-                        <div className="col-lg-9 col-md-6 col-sm-12" />
-                    </div>
-
-                    {/* Basic Information */}
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <label htmlFor="fName" className="form-label">
-                                <h3>First Name</h3>
-                            </label>
-                            <Field type="text" className="form-control" id="fName" name="fName" />
-                            <ErrorMessage name="fName" component="div" className="text-danger" />
-                        </div>
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <label htmlFor="lName" className="form-label">
-                                <h3>Last Name</h3>
-                            </label>
-                            <Field type="text" className="form-control" id="lName" name="lName" />
-                            <ErrorMessage name="lName" component="div" className="text-danger" />
-                        </div>
-                    </div>
-
-                    {/* Additional Information */}
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <label htmlFor="email" className="form-label">
-                                <h3>Email</h3>
-                            </label>
-                            <Field type="text" className="form-control" id="email" name="email" />
-                            <ErrorMessage name="email" component="div" className="text-danger" />
-                        </div>
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <label htmlFor="class" className="form-label">
-                                <h3>Class</h3>
-                            </label>
-                            <Field type="text" className="form-control" id="class" name="class" />
-                            <ErrorMessage name="class" component="div" className="text-danger" />
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <label htmlFor="grade" className="form-label">
-                                <h3>Grade</h3>
-                            </label>
-                            <Field type="text" className="form-control" id="grade" name="grade" />
-                            <ErrorMessage name="grade" component="div" className="text-danger" />
-                        </div>
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <label htmlFor="phone" className="form-label">
-                                <h3>Phone Number</h3>
-                            </label>
-                            <Field type="text" className="form-control" id="phone" name="phone" />
-                            <ErrorMessage name="phone" component="div" className="text-danger" />
-                        </div>
-                    </div>
-
-                    {/* Date of Birth and Country */}
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-12 w-100">
-                            <label htmlFor="birthdate" className="form-label">
-                                <h3>Birthdate</h3>
-                            </label>
-                            <div className="input-group" style={{ display: "flex", alignItems: "center" }}>
-                                <DatePicker
-                                    id="birthdate"
-                                    name="birthdate"
-                                    selected={formik.values.birthdate}
-                                    onChange={(date) => formik.setFieldValue("birthdate", date)}
-                                    dateFormat="MM/dd/yyyy"
-                                    className="form-control"
-                                    customInput={<input className="form-control" />}
-                                />
-                                <span className="d-flex align-items-center mb-2 " style={{ position: "absolute", left: "180px" }}>
-                                    <BsCalendar />
-                                </span>
-                            </div>
-                            <ErrorMessage name="birthdate" component="div" className="text-danger" />
-                        </div>
-
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <label htmlFor="country" className="form-label">
-                                <h3>Country</h3>
-                            </label>
-                            <Field
-                                as="select"
-                                id="country"
-                                name="country"
-                                className="form-select"
-                                append={
-                                    <label htmlFor="country" className="input-group-text bg-white border-start-0">
-                                        <BsFillCaretDownFill />
+                        // After form submission, navigate to the table component
+                        navigate("/table");
+                    }}>
+                    {(formik) => (
+                        <Form>
+                            <div className="row">
+                                {/* Profile Picture */}
+                                <div className="col-lg-3 col-md-6 col-sm-12">
+                                    <label htmlFor="profilePicture" className="fw-bold form-label">
+                                        <h5>Profile Picture</h5>
                                     </label>
-                                }
-                            >
-                                <option value="">Select a country</option>
-                                <option value="USA">United States</option>
-                                <option value="UK">United Kingdom</option>
-                                <option value="PK">Pakistan</option>
-                                <option value="AT">Austria</option>
-                                <option value="CN">China</option>
-                                {/* Add more countries as needed */}
-                            </Field>
-                            <ErrorMessage name="country" component="div" className="text-danger" />
-                        </div>
-                    </div>
-
-                    {/* Gender */}
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-12 w-100">
-                            <label className="form-label">
-                                <h3>Gender</h3>
-                            </label>
-                            <div role="group" aria-labelledby="my-radio-group">
-                                <label>
-                                    <Field type="radio" name="gender" value="male" />
-                                    <p>Male</p>
-                                </label>
-                                <label>
-                                    <Field type="radio" name="gender" value="female" className="ms-5" />
-                                    <p>Female</p>
-                                </label>
-                                <label>
-                                    <Field type="radio" name="gender" value="other" className="ms-5" />
-                                    <p>Other</p>
-                                </label>
+                                    <input
+                                        className="form-control"
+                                        type="file"
+                                        id="profilePicture"
+                                        name="profilePicture"
+                                        accept="image/*"
+                                        onChange={(event) => {
+                                            const file = event.currentTarget.files[0];
+                                            const reader = new FileReader();
+                                            reader.onload = (e) => {
+                                                const imageData = e.target.result;
+                                                formik.setFieldValue("profilePicture", imageData);
+                                            };
+                                            reader.readAsDataURL(file);
+                                        }}
+                                    />
+                                    {formik.values.profilePicture && (
+                                        <img
+                                            className="d-flex justify-content-start"
+                                            src={formik.values.profilePicture}
+                                            alt="Profile"
+                                            style={{ width: "100%", height: "auto" }}
+                                        />
+                                    )}
+                                </div>
                             </div>
-                            <ErrorMessage name="gender" component="div" className="text-danger" />
-                        </div>
-                    </div>
-
-                    {/* Submit Button */}
-                    <div className="row justify-content-center">
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <button type="submit" className="btn btn-primary w-100">
-                                <p>{index !== null ? "Update" : "Submit"}</p>
-                            </button>
-                        </div>
-                    </div>
-                </Form>
-            )}
-        </Formik>
+                            <div className="row">
+                                {/* Basic Information */}
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <label htmlFor="fName" className="form-label">
+                                        <h5>First Name</h5>
+                                    </label>
+                                    <Field type="text" className="form-control" id="fName" name="fName" />
+                                    <ErrorMessage name="fName" component="div" className="text-danger" />
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <label htmlFor="lName" className="form-label">
+                                        <h5>Last Name</h5>
+                                    </label>
+                                    <Field type="text" className="form-control" id="lName" name="lName" />
+                                    <ErrorMessage name="lName" component="div" className="text-danger" />
+                                </div>
+                                {/* Additional Information */}
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <label htmlFor="email" className="form-label">
+                                        <h5>Email</h5>
+                                    </label>
+                                    <Field type="text" className="form-control" id="email" name="email" />
+                                    <ErrorMessage name="email" component="div" className="text-danger" />
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <label htmlFor="class" className="form-label">
+                                        <h5>Class</h5>
+                                    </label>
+                                    <Field type="text" className="form-control" id="class" name="class" />
+                                    <ErrorMessage name="class" component="div" className="text-danger" />
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <label htmlFor="grade" className="form-label">
+                                        <h5>Grade</h5>
+                                    </label>
+                                    <Field type="text" className="form-control" id="grade" name="grade" />
+                                    <ErrorMessage name="grade" component="div" className="text-danger" />
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <label htmlFor="phone" className="form-label">
+                                        <h5>Phone Number</h5>
+                                    </label>
+                                    <Field type="text" className="form-control" id="phone" name="phone" />
+                                    <ErrorMessage name="phone" component="div" className="text-danger" />
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <label htmlFor="birthdate" className="form-label">
+                                        <h5>Birthdate</h5>
+                                    </label>
+                                    <div className="input-group" style={{ display: "flex", alignItems: "center" }}>
+                                        <DatePicker
+                                            id="birthdate"
+                                            name="birthdate"
+                                            selected={formik.values.birthdate}
+                                            onChange={(date) => formik.setFieldValue("birthdate", date)}
+                                            dateFormat="MM/dd/yyyy"
+                                            className="form-control"
+                                            customInput={<input className="form-control" />}
+                                        />
+                                        <span className="d-flex align-items-center mb-2 " style={{ position: "absolute", left: "180px" }}>
+                                            <BsCalendar />
+                                        </span>
+                                    </div>
+                                    <ErrorMessage name="birthdate" component="div" className="text-danger" />
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <label htmlFor="country" className="form-label">
+                                        <h5>Country</h5>
+                                    </label>
+                                    <Field
+                                        as="select"
+                                        id="country"
+                                        name="country"
+                                        className="form-select"
+                                        append={
+                                            <label htmlFor="country" className="input-group-text bg-white border-start-0">
+                                                <BsFillCaretDownFill />
+                                            </label>
+                                        }
+                                    >
+                                        <option value="">Select a country</option>
+                                        <option value="USA">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="PK">Pakistan</option>
+                                        <option value="AT">Austria</option>
+                                        <option value="CN">China</option>
+                                        {/* Add more countries as needed */}
+                                    </Field>
+                                    <ErrorMessage name="country" component="div" className="text-danger" />
+                                </div>
+                                <div className="col-lg-2">
+                                    <label className="form-label">
+                                        <h5>Gender</h5>
+                                    </label>
+                                    <div role="group" aria-labelledby="my-radio-group" className="d-flex justify-content-around">
+                                        <label className="text-center">
+                                            <Field type="radio" name="gender" value="male" />
+                                            <p>Male</p>
+                                        </label>
+                                        <label className="text-center">
+                                            <Field type="radio" name="gender" value="female" />
+                                            <p>Female</p>
+                                        </label>
+                                        <label className="text-center">
+                                            <Field type="radio" name="gender" value="other" />
+                                            <p>Other</p>
+                                        </label>
+                                    </div>
+                                    <ErrorMessage name="gender" component="div" className="text-danger" />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-lg-6 col-md-6 col-sm-12">
+                                    <button type="submit" className="btn btn-primary w-50">
+                                        <p>{index !== null ? "Update" : "Submit"}</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
+            </div >
+        </>
     );
 };
 

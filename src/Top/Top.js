@@ -3,7 +3,9 @@ import { useState } from 'react';
 import YourFormComponent from '../Form/Form';
 import 'font-awesome/css/font-awesome.min.css';
 import { Link, useNavigate } from 'react-router-dom';
-
+import "./Top.css";
+import logo from "../../src/assets/logo white name.png"
+import icon from "../../src/assets/logo icon.png"
 
 function Top() {
 
@@ -28,27 +30,23 @@ function Top() {
 
     return (
         <>
-            <div className="bg-dark mt-0 ">
-                <div className="container mt-0">
-                    <div className="row text-white align-items-center">
+            <div className="bg-dark">
+                <div className="container-fluid py-2">
+                    <div className="row text-center">
                         <div className="col-3">
                             <i className="fa fa-map-marker them-color"></i>{' '}
                             <span className="gary-color">Employees Colony Layyah, Pakistan</span>
                         </div>
-                        <div className="col-3">
+                        <div className="col-2">
                             <i className="fa fa-envelope them-color"></i>{' '}
                             <span className="gary-color">hello@bitsbuffer.com</span>
                         </div>
-                        <div className="col-4 gary-color">
-                            <marquee>This text will scroll from right to left</marquee>
-                            {/* <div className="row">
-                                <div className="col-6">
-                                    <marquee direction="up">This text up</marquee>
-                                </div>
-                                <div className="col-6">
-                                    <marquee direction="down">This text down</marquee>
-                                </div>
-                            </div> */}
+                        <div className="col-2 ">
+                            <i className="fa-solid fa-phone them-color"></i>{' '}
+                            <span className="gary-color">+92-333-6206009</span>
+                        </div>
+                        <div className="col-3 gary-color">
+                            <marquee>BitsBuffer</marquee>
                         </div>
                         <div className="col-2">
                             <i className="fa fa-facebook bg-white them-color p-2 rounded-circle"></i>
@@ -59,81 +57,73 @@ function Top() {
                     </div>
                 </div>
             </div>
-            <header className="header-area header-sticky" style={{ background: 'linear-gradient(to right, #ff8c00, #ff0080)' }}>
-                <div className="row ">
-                    <nav className="navbar navbar-expand-lg navbar-light">
-                        <a className="navbar-brand" href="index.html">
-                            BitsBuffer
-                        </a>
-                        <button
-                            className="navbar-toggler"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#navbarNav"
-                            aria-controls="navbarNav"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav mx-auto" style={{ textDecoration: 'none', listStyle: 'none', display: 'flex', alignItems: 'center' }}>
-                                <li className="nav-item active" style={{ marginRight: '15px' }}>
-                                    <Link to="/" style={{ color: 'black', textDecoration: 'none' }}>
-                                        Home
-                                    </Link>
-                                </li>
-                                <li className="nav-item" style={{ marginRight: '15px' }}>
-                                    <Link to="/form" style={{ color: 'black', textDecoration: 'none' }}>
-                                        Form
-                                    </Link>
-                                </li>
-                                <li className="nav-item" style={{ marginRight: '15px' }}>
-                                    <Link to="/table" style={{ color: 'black', textDecoration: 'none' }}>
-                                        Table
-                                    </Link>
-                                </li>
-                                <li className="nav-item" style={{ marginRight: '15px' }}>
-                                    <Link to="/card" style={{ color: 'black', textDecoration: 'none' }}>
-                                        Card
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/yourForm" style={{ color: 'black', textDecoration: 'none' }}>
-                                        Your Form
-                                    </Link>
-                                </li>
-                                <li className="nav-item ms-3">
-                                    <Link to="/shop" style={{ color: 'black', textDecoration: 'none' }}>
-                                       Shop
-                                    </Link>
-                                </li>
-                            </ul>
-                            <div className="row ml-auto mt-1">
+            <nav className="ps-3 bg-color navbar navbar-expand-lg ">
+                <a className="navbar-brand" href="index.html">
+                    <img src={icon} alt="icon"  style={{width:"30px" , height:"30px"}} className='m-2 icon tada'/>
+                    <img src={logo} alt="logo" style={{width:"75px" , height:"30px"}} className='m-2 logo'/>
+                </a>
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav mx-auto" style={{ textDecoration: 'none', listStyle: 'none', display: 'flex', alignItems: 'center' }}>
+                        <li className="nav-item active" style={{ marginRight: '15px' }}>
+                            <Link to="/"  className='style-non'>
+                                Home
+                            </Link>
+                        </li>
+                        <li className="nav-item" style={{ marginRight: '15px' }}>
+                            <Link to="/form"className='style-non'>
+                                Form
+                            </Link>
+                        </li>
+                        <li className="nav-item" style={{ marginRight: '15px' }}>
+                            <Link to="/table" className='style-non'>
+                                Table
+                            </Link>
+                        </li>
+                        <li className="nav-item" style={{ marginRight: '15px' }}>
+                            <Link to="/card" className='style-non'>
+                                Card
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/yourForm" className='style-non'>
+                                Your Form
+                            </Link>
+                        </li>
+                        <li className="nav-item ms-3">
+                            <Link to="/shop" className='style-non'>
+                                Shop
+                            </Link>
+                        </li>
+                    </ul>
 
-                                <input
-                                    className="form-control mr-sm-2"
-                                    type="search"
-                                    placeholder="Search"
-                                    aria-label="Search"
-                                    value={searchQuery}
-                                    onChange={handleSearch}
-                                    onKeyPress={handleKeyPress}
-                                />
-                                <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleSearchSubmit}>
-                                    Search
-                                </button>
-
-
-                            </div>
-                        </div>
-                    </nav>
                 </div>
-                {/* <YourFormComponent searchQuery={searchQuery} /> */}
-            </header>
+                <div className="d-flex text-end">
+                    <input
+                        className="form-control"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                        value={searchQuery}
+                        onChange={handleSearch}
+                        onKeyPress={handleKeyPress}
+                    />
+                    <button className="btn m-0 mx-2" onClick={handleSearchSubmit}>
+                        Search
+                    </button>
+                </div>
+            </nav>
         </>
-
-
     );
 }
 
