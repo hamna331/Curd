@@ -8,6 +8,7 @@ import About from './About';
 import Services from './Services';
 import Project from './Project';
 import Blog from './Blog';
+import Team from './Team';
 
 
 const Home = () => {
@@ -76,6 +77,7 @@ const Home = () => {
       <Services/>
       <Project/>
       <Blog/>
+      <Team/>
     </>
   );
 };
