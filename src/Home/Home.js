@@ -9,6 +9,8 @@ import Services from './Services';
 import Project from './Project';
 import Blog from './Blog';
 import Team from './Team';
+import Facts from './Facts';
+import Contact from './Contact';
 
 
 const Home = () => {
@@ -78,6 +80,8 @@ const Home = () => {
       <Project/>
       <Blog/>
       <Team/>
+      <Facts/>
+      <Contact/>
     </>
   );
 };
