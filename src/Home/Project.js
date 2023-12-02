@@ -55,7 +55,7 @@ function Project() {
                                     <img src={value.imgsrc} className="img-fluid w-100 rounded" alt="" />
                                     <div className="project-content">
                                         <a href="#" className="text-center">
-                                            <h4 className="text-success fw-bold">{value.title1}</h4>
+                                            <h4 className=" fw-bold">{value.title1}</h4>
                                             <p className="m-0 text-white fw-bold">{value.title2}</p>
                                         </a>
                                     </div>

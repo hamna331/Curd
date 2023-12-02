@@ -147,7 +147,7 @@ function Blog() {
                   <p className="py-2">{value.title4}</p>
                 </div>
                 <div className="blog-coment d-flex justify-content-between px-4 py-2 border bg-primary rounded-bottom">
-                  <a href="" className="text-white">
+                  <a href="" className="text-white" style={{ textDecoration: "none" }}>
                     <small>
                       <i className=" me-2 text-success "  style={{ textDecoration: 'none' }}>
                         <FontAwesomeIcon icon={value.icon5} />
@@ -155,7 +155,7 @@ function Blog() {
                       {value.title5}
                     </small>
                   </a>
-                  <a href="" className="text-white">
+                  <a href="" className="text-white" style={{ textDecoration: "none" }}>
                     <small>
                       <i className=" me-2 text-success " style={{ textDecoration: 'none' }}>
                         <FontAwesomeIcon icon={value.icon6} />

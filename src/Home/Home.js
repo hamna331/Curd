@@ -11,6 +11,7 @@ import Blog from './Blog';
 import Team from './Team';
 import Facts from './Facts';
 import Contact from './Contact';
+import Footer from './Footer';
 
 
 const Home = () => {
@@ -82,6 +83,7 @@ const Home = () => {
       <Team/>
       <Facts/>
       <Contact/>
+      <Footer/>
     </>
   );
 };

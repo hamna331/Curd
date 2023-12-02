@@ -1,3 +1,16 @@
+
+#spinner {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .8s ease-out, visibility 0s linear .5s;
+  z-index: 99999;
+}
+
+#spinner.show {
+   transition: opacity .8s ease-out, visibility 0s linear .0s;
+   visibility: visible;
+   opacity: 1;
+}
 .carousel-item {
     position: relative;
   }
@@ -185,48 +198,9 @@
    */
   /* Home.css */
   
-                /* TESTIMONIALS */
-                .testimonial-item {
-                    background: #e3f0eb;
+               
                 
-                }
                 
-                .testimonial-carousel .owl-dots {
-                    margin-top: 15px;
-                    display: flex;
-                    align-items: flex-end;
-                    justify-content: center;
-                }
-                
-                .testimonial-carousel .owl-dot {
-                    position: relative;
-                    display: inline-block;
-                    margin: 0 5px;
-                    width: 15px;
-                    height: 15px;
-                    background: #c1dad0;
-                    border-radius: 15px;
-                    transition: .5s;
-                }
-                
-                .testimonial-carousel .owl-dot.active {
-                    width: 30px;
-                    background: var(--bs-primary);
-                }
-                
-                .testimonial-carousel .owl-item.center {
-                    position: relative;
-                    z-index: 1;
-                }
-                
-                .testimonial-carousel .owl-item .testimonial-item {
-                    transition: .5s;
-                }
-                
-                .testimonial-carousel .owl-item.center .testimonial-item {
-                    background: #FFFFFF !important;
-                    box-shadow: 0 0 30px #DDDDDD;
-                }
                 /* About */
                 .col-md-6{
                     max-width: 100%;
@@ -341,6 +315,78 @@
   width: 170px;
   height: 140px;
 }
+.project-img {
+  position: relative;
+  padding: 15px;
+}
+
+.project-img::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 0;
+  left: 0;
+  background: var(--bs-secondary);
+  border-radius: 10px;
+  opacity: 1;
+  z-index: -1;
+  transition: .5s;
+}
+
+.project-img::after {
+  content: "";
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: var(--bs-primary);
+  border-radius: 10px;
+  opacity: 1;
+  z-index: -1;
+  transition: .5s;
+}
+
+.project-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  text-decoration: none;
+  /* color: aqua; */
+}
+
+.project-content a {
+  display: inline-block;
+  padding: 20px 25px;
+  background: var(--bs-primary);
+  border-radius: 10px;
+  text-decoration: none;
+  color: aqua;
+
+
+}
+
+.project-item:hover .project-content {
+  opacity: 1;
+  transition: .5s;
+  text-decoration: none;
+  /* color: aqua; */
+
+}
+
+.project-item:hover .project-img::before,
+.project-item:hover .project-img::after {
+  opacity: 0;
+}
+
+/*** Project End ***/
  /* ......team  */
  .team-item {
   border-top: 30px solid var(--bs-success) !important;
@@ -476,3 +522,46 @@
 }
 
 /*** Testimonial End ***/
+/*** Contact Start ***/
+.contact-detail::before {
+  position: absolute;
+  content: "";
+  height: 50%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../assets/background.jpg) center center no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+/* .contact-map {
+  background: #26d48c;
+}
+
+.contact-form {
+  background: #26d48c;
+} */
+
+/*** Contact End ***/
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+/*** Footer End ***/
