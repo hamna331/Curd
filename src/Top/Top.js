@@ -30,7 +30,7 @@ function Top() {
 
     return (
         <>
-            <div className="bg-dark  text-white">
+            <div className="bg-dark text-white">
                 <div className="container-fluid py-2">
                     <div className="row text-center">
                         <div className="col-3">
@@ -96,7 +96,7 @@ function Top() {
                                 Table
                             </Link>
                         </li>
-                        <li className="nav-item" style={{ marginRight: '15px' }}>
+                        {/* <li className="nav-item" style={{ marginRight: '15px' }}>
                             <Link to="/card" className='style-non'>
                                 Card
                             </Link>
@@ -105,7 +105,7 @@ function Top() {
                             <Link to="/yourForm" className='style-non'>
                                 Your Form
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="nav-item ms-3">
                             <Link to="/shop" className='style-non'>
                                 Shop
@@ -124,7 +124,7 @@ function Top() {
                         onChange={handleSearch}
                         onKeyPress={handleKeyPress}
                     />
-                    <button className="btn btn-search m-0 mx-2" onClick={handleSearchSubmit}>
+                    <button className="btn btn-search  me-5 text-white" onClick={handleSearchSubmit}>
                         Search
                     </button>
                 </div>
