@@ -1,3 +1,6 @@
 .them-color{
 color: #1bb1dc
 }
+.image-hover-border:hover {
+    border: #1bb1dc solid 2px;
+}
