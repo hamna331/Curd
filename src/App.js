@@ -9,6 +9,7 @@ import TableComponent from './studantData/studantTable';
 import StudentCard from './studantData/studentCard';
 import Shop from './Shop/Shop';
 import Shopitem from './Shop/Shopitem';
+import Page from './Pages/Page';
 
 
 const App = () => {
@@ -27,6 +28,8 @@ const App = () => {
         <Route path="/student-card/:index" element={<StudentCard />} />
         <Route path="/shop" element={<Shop/>} />
         <Route path="/shopItem/:Id" element={<Shopitem />} />
+        <Route path="/Page" element={<Page/>} />
+
       </Routes>
     </Router>
   );

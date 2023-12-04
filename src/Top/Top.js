@@ -96,6 +96,11 @@ function Top() {
                                 Table
                             </Link>
                         </li>
+                        <li className="nav-item" style={{ marginRight: '15px' }}>
+                            <Link to="/Page" className='style-non'>
+                                Pages
+                            </Link>
+                        </li>
                         {/* <li className="nav-item" style={{ marginRight: '15px' }}>
                             <Link to="/card" className='style-non'>
                                 Card
