@@ -10,6 +10,7 @@ import StudentCard from './studantData/studentCard';
 import Shop from './Shop/Shop';
 import Shopitem from './Shop/Shopitem';
 import Page from './Pages/Page';
+import ArrayOfObjects from './Home/dataBase/arrayOfObjects';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/shop" element={<Shop/>} />
         <Route path="/shopItem/:Id" element={<Shopitem />} />
         <Route path="/Page" element={<Page/>} />
+        <Route path="/air" element={<ArrayOfObjects/>} />
 
       </Routes>
     </Router>
