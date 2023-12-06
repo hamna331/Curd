@@ -12,6 +12,8 @@ import Shopitem from './Shop/Shopitem';
 import Page from './Pages/Page';
 import SignUp from './Auth/SignUp'
 import LogIn from './Auth/LogIn';
+import ArrayOfObjects from './Home/dataBase/arrayOfObjects';
+
 
 const App = () => {
   const [appFormData, setAppFormData] = useState([]);
@@ -33,6 +35,7 @@ const App = () => {
         <Route path="/SignUp" element={<SignUp/>} />
         <Route path="/login" element={<LogIn/>} />
 
+        <Route path="/air" element={<ArrayOfObjects/>} />
 
       </Routes>
     </Router>

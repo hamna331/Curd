@@ -116,6 +116,12 @@ function Top() {
                                 Shop
                             </Link>
                         </li>
+
+                        <li className="nav-item ms-3">
+                            <Link to="/air" className='style-non'>
+                                Air Crafts
+                            </Link>
+                        </li>
                     </ul>
 
                 </div>
