@@ -10,7 +10,8 @@ import StudentCard from './studantData/studentCard';
 import Shop from './Shop/Shop';
 import Shopitem from './Shop/Shopitem';
 import Page from './Pages/Page';
-
+import SignUp from './Auth/SignUp'
+import LogIn from './Auth/LogIn';
 
 const App = () => {
   const [appFormData, setAppFormData] = useState([]);
@@ -29,6 +30,9 @@ const App = () => {
         <Route path="/shop" element={<Shop/>} />
         <Route path="/shopItem/:Id" element={<Shopitem />} />
         <Route path="/Page" element={<Page/>} />
+        <Route path="/SignUp" element={<SignUp/>} />
+        <Route path="/login" element={<LogIn/>} />
+
 
       </Routes>
     </Router>

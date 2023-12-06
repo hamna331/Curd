@@ -9,31 +9,32 @@ import img2 from "../images/Pages/carousel-2.jpg";
 function Page() {
   return (
     <>
-     <nav ClassName="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="" ClassName="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 ClassName="m-0 text-primary"><i ClassName="fa fa-book me-3"></i>eLEARNING</h2>
-        </a>
-        <button type="button" ClassName="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span ClassName="navbar-toggler-icon"></span>
-        </button>
-        <div ClassName="collapse navbar-collapse" id="navbarCollapse">
-            <div ClassName="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="" ClassName="nav-item nav-link active fw-bold m-2 ">Home</a>
-                <a href="about.html" ClassName="nav-item nav-link fw-bold m-2">About</a>
-                <a href="courses.html" ClassName="nav-item nav-link fw-bold m-2">Courses</a>
-                <div ClassName="nav-item dropdown">
-                    <a href="#" ClassName="nav-link dropdown-toggle" data-bs-toggle="dropdown fw-bold m-2">Pages</a>
-                    <div ClassName="dropdown-menu fade-down m-0">
-                        <a href="team.html" ClassName="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" ClassName="dropdown-item">Testimonial</a>
-                        <a href="404.html" ClassName="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" ClassName="nav-item nav-link fw-bold m-2">Contact</a>
+   <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="/" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 className="m-0 text-primary"><i className="fa fa-book me-3"></i>eLEARNING</h2>
+    </a>
+    <button type="button" className="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarCollapse">
+        <div className="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" className="nav-item nav-link active fw-bold m-2">Home</a>
+            <a href="about.html" className="nav-item nav-link fw-bold m-2">About</a>
+            <a href="courses.html" className="nav-item nav-link fw-bold m-2">Courses</a>
+            <div className="nav-item dropdown">
+                <a href="#" className="nav-link dropdown-toggle fw-bold m-2" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                <ul className="dropdown-menu fade-down m-0" aria-labelledby="navbarDropdown">
+                    <li><a href="team.html" className="dropdown-item">Our Team</a></li>
+                    <li><a href="testimonial.html" className="dropdown-item">Testimonial</a></li>
+                    <li><a href="404.html" className="dropdown-item">404 Page</a></li>
+                </ul>
             </div>
-            <a href="" ClassName="btn btn-primary py-4 px-lg-5 d-none d-lg-block fw-bold m-2">Join Now<i ClassName="fa fa-arrow-right ms-3"></i></a>
+            <a href="contact.html" className="nav-item nav-link fw-bold m-2">Contact</a>
         </div>
-    </nav>
+        <a href="/" className="btn btn-primary py-4 px-lg-5 d-none d-lg-block fw-bold m-2">Join Now<i className="fa fa-arrow-right ms-3"></i></a>
+    </div>
+</nav>
+
       {/* ..////////////hero */}
       {/* <div className="container-fluid p-0 mb-5">
         <div className="owl-carousel header-carousel position-relative">
