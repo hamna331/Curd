@@ -13,6 +13,8 @@ import Page from './Pages/Page';
 import SignUp from './Auth/SignUp'
 import LogIn from './Auth/LogIn';
 import ArrayOfObjects from './Home/dataBase/arrayOfObjects';
+import Otp from './Auth/Otp';
+import ResetPassword from './Auth/ResetPassword'
 
 
 const App = () => {
@@ -34,6 +36,10 @@ const App = () => {
         <Route path="/Page" element={<Page/>} />
         <Route path="/SignUp" element={<SignUp/>} />
         <Route path="/login" element={<LogIn/>} />
+        <Route path="/otp" element={<Otp/>} />
+        <Route path="/resetpassword" element={<ResetPassword/>} />
+
+
 
         <Route path="/air" element={<ArrayOfObjects/>} />
 

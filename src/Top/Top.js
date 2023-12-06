@@ -41,11 +41,11 @@ function Top() {
                             <i className="fa fa-envelope them-color"></i>{' '}
                             <span className="gary-color">hello@bitsbuffer.com</span>
                         </div>
-                        <div className="col-2 ">
-                            <i className="fa-solid fa-phone them-color"></i>{' '}
+                        <div className="col-1 ">
+                            <i className=" them-color"></i>{' '}
                             <span className="gary-color">+92-333-6206009</span>
                         </div>
-                        <div className="col-3 gary-color">
+                        <div className="col-2 gary-color">
                             <div className="marquee-container">
                                 <div className="marquee" data-direction="up">
                                     <div className="inner-marquee" data-direction="alternate">
@@ -54,11 +54,13 @@ function Top() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-2">
+                        <div className="col-4">
                             <i className="fa fa-facebook bg-white them-color p-2 rounded-circle"></i>
                             <i className="fa fa-twitter bg-white them-color p-2 rounded-circle ms-1"></i>
                             <i className="fa fa-instagram bg-white them-color p-2 rounded-circle ms-1"></i>
                             <i className="fa fa-linkedin bg-white them-color p-2 rounded-circle ms-1"></i>
+                            <Link className="fa fa-user text-light ms-3" style={{ textDecoration: 'none', listStyle: 'none',  }} aria-hidden="true" to='/SignUp'> sign up</Link>
+                    <Link className="fa fa-user text-light ms-2" style={{ textDecoration: 'none', listStyle: 'none',  }} aria-hidden="true" to='/login'> login</Link>
                         </div>
                     </div>
                 </div>
@@ -138,7 +140,8 @@ function Top() {
                     <button className="btn btn-search  me-5 text-white" onClick={handleSearchSubmit}>
                         Search
                     </button>
-                </div>
+                   
+                     </div>
             </nav>
         </>
     );

@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { BsFillCaretDownFill } from "react-icons/bs";
 import { BsCalendar } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -25,8 +24,9 @@ const YourFormComponent = ({ searchQuery }) => {
 
   useEffect(() => {
     const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
+    console.log("savedFormData")
+
     setFormData(savedFormData);
-    console.log("formData")
   }, []);
 
   const saveToLocalStorage = (data = false) => {
@@ -39,6 +39,7 @@ const YourFormComponent = ({ searchQuery }) => {
 
     localStorage.setItem("formData", JSON.stringify(updatedFormData));
     setFormData(updatedFormData);
+    console.log('formData')
     setEditIndex(null);
   };
 
@@ -46,7 +47,6 @@ const YourFormComponent = ({ searchQuery }) => {
 
     
     <div className="container-fluid bg-light">
-    
       <Formik
         innerRef={formRef}
         initialValues={{
@@ -69,45 +69,12 @@ const YourFormComponent = ({ searchQuery }) => {
       >
         {(formik) => (
           <Form>
-           
-            <div className="row profile">
-              <div className="col-lg-3 col-md-6 col-sm-12 mt-5">
-                <label htmlFor="profilePicture " className="fw-bold">
-                 <h3>Profile Picture</h3> 
-                </label>
-                <input
-                  type="file"
-                  id="profilePicture"
-                  name="profilePicture"
-                  accept="image/*"
-                  onChange={(event) => {
-                    const file = event.currentTarget.files[0];
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                      const imageData = e.target.result;
-                      formik.setFieldValue("profilePicture", imageData);
-                    };
-                    reader.readAsDataURL(file);
-                  }}
-                />
-                {formik.values.profilePicture && (
-                  <img
-                    className="d-flex justify-content-start"
-                    src={formik.values.profilePicture}
-                    alt="Profile"
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                )}
-              </div>
-              <div className="col-lg-9 col-md-6 col-sm-12" />
+          <div className="container bg-light mt-2">
 
-            </div>
-
-
-            <div className="row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="row d-flex justify-content-center  m-2">
+              <div className="col-lg-5 col-md-6 col-sm-12">
                 <label htmlFor="fName" className="form-label">
-                  <h3>First Name</h3>
+                  <h5>First Name</h5>
                 </label>
                 <Field
                   type="text"
@@ -121,9 +88,11 @@ const YourFormComponent = ({ searchQuery }) => {
                   className="text-danger"
                 />
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
+              </div>
+              <div className="row d-flex justify-content-center  m-2">
+              <div className="col-lg-5 col-md-6 col-sm-12">
                 <label htmlFor="lName" className="form-label">
-                  <h3>Last Name</h3>
+                  <h5>Last Name</h5>
                 </label>
                 <Field
                   type="text"
@@ -139,11 +108,11 @@ const YourFormComponent = ({ searchQuery }) => {
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="row d-flex justify-content-center  m-2">
+              <div className="col-lg-5 col-md-6 col-sm-12">
                 <label htmlFor="email" className="form-label">
                   
-                  <h3>E-mail</h3>
+                  <h5>E-mail</h5>
                 </label>
                 <Field
                   type="text"
@@ -160,12 +129,12 @@ const YourFormComponent = ({ searchQuery }) => {
         
             </div>
 
-            <div className="row">
+            <div className="row d-flex justify-content-center  m-2">
             
-              <div className="col-lg-6 col-md-6 col-sm-12">
+              <div className="col-lg-5 col-md-6 col-sm-12">
                 <label htmlFor="phone" className="form-label">
                   
-                  <h3> Phone Number</h3>
+                  <h5> Phone Number</h5>
                 </label>
                 <Field
                   type="text"
@@ -180,20 +149,20 @@ const YourFormComponent = ({ searchQuery }) => {
                 />
               </div>
             </div>
-            <div className="row">
-              <div className="col-lg-6 col-md-6 col-sm-12 w-100">
+            <div className="row d-flex justify-content-center  m-2">
+              <div className="col-lg-5 col-md-6 col-sm-12">
                 <label htmlFor="birthdate" className="form-label">
                   
-                  <h3>Birthdate</h3>
+                  <h5>Birthdate</h5>
                 </label>
-                <div className="input-group" style={{ display: 'flex', alignItems: 'center' }}>
+                <div className="input-group " style={{ display: 'flex', alignItems: 'center' }}>
                   <DatePicker
                     id="birthdate"
                     name="birthdate"
                     selected={formik.values.birthdate}
                     onChange={(date) => formik.setFieldValue("birthdate", date)}
                     dateFormat="MM/dd/yyyy"
-                    className="form-control"
+                    className="form-control "
                     customInput={<input className="form-control" />}
                   />
                   <span className="d-flex align-items-center mb-2 " style={{ position: 'absolute', left: '180px' }}>
@@ -206,9 +175,9 @@ const YourFormComponent = ({ searchQuery }) => {
                   className="text-danger"
                 />
               </div>           
-              <div className="row">
-                <div className="col-lg-6 col-md-6 col-sm-12 w-100 ">
-                  <label className="form-label"><p>Gender</p></label>
+              <div className="row d-flex justify-content-center">
+                <div className="col-lg-5 col-md-6 col-sm-12  ">
+                  <label className="form-label fw-bold m-2"><h5>Gender</h5></label>
                   <div role="group" aria-labelledby="my-radio-group">
                     <label>
                       <Field type="radio" name="gender" value="male" />
@@ -221,7 +190,7 @@ const YourFormComponent = ({ searchQuery }) => {
                         value="female"
                         className="ms-5"
                       />
-                      <p>Female</p>
+                      <p className="ms-5">Female</p>
                     </label>
                     <label>
                       <Field
@@ -230,7 +199,7 @@ const YourFormComponent = ({ searchQuery }) => {
                         value="other"
                         className="ms-5"
                       />
-                      <p>Other</p>
+                      <p className="ms-5">Other</p>
                     </label>
                   </div>
                   <ErrorMessage
@@ -243,14 +212,17 @@ const YourFormComponent = ({ searchQuery }) => {
             </div>
 
             {/* Submit button inside the form */}
-            <div className="row justify-content-center ">
-              <Link className="col-lg-6 col-md-6 col-sm-12" to='/login'>
-                <button type="submit" className="btn btn-primary w-100  ">
-                  <p>Submit</p>
+            <div className="row d-flex justify-content-center">
+              <Link className="col-lg-3 col-md-6 col-sm-12" to='/login'>
+                <button type="submit" className="btn btn-primary w-100 mt-3  mb-3">
+                  <p className="mt-3">Submit</p>
                 </button>
               </Link>
             </div>
+            </div>
           </Form>
+          
+
         )}
       </Formik>
       {/* <table id="scoreTable" className="table table-bordered mt-5">

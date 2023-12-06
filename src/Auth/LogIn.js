@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 
+
 const validationSchema = Yup.object().shape({
   UserName: Yup.string().required("User Name is required"),
   Password: Yup.string().required("Password is required"),
@@ -45,20 +46,19 @@ const YourFormComponent = ({ searchQuery }) => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-                      console.log("Form submitted! Values:", values);
-          saveToLocalStorage(values);
-          console.log(values);
-          resetForm();
-          setSubmitting(false);
-        }}
+    console.log("Form submitted! Values:", values); // This line logs the form values
+    saveToLocalStorage(values);
+    resetForm();
+    setSubmitting(false);
+  }}
       >
         {(formik) => (
           <Form>
-          <div className="container justify-content-center">
-            <div className="row">
+          <div className="container bg-light mt-1 ">
+            <div className="row  d-flex justify-content-center">
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <label htmlFor="User Name" className="form-label mt-3">
-                  <h3>User Name</h3>
+                  <h5>User Name</h5>
                 </label>
                 <Field
                   type="text"
@@ -73,10 +73,10 @@ const YourFormComponent = ({ searchQuery }) => {
                 />
               </div>
               </div>
-              <div className="row">
+              <div className="row  d-flex justify-content-center">
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <label htmlFor="Password" className="form-label mt-3">
-                  <h3>Password</h3>
+                  <h5>Password</h5>
                 </label>
                 <Field
                   type="text"
@@ -93,10 +93,15 @@ const YourFormComponent = ({ searchQuery }) => {
             </div>
 
             {/* Submit button inside the form */}
-            <div className="row justify-content-center ">
-              <Link className="col-lg-2 m-5 col-md-6 col-sm-12" to="/login">
-                <button type="submit" className="btn btn-primary w-100  ">
-                  <p>Submit</p>
+            <div className="row d-flex justify-content-center ">
+              <Link className="col-lg-2 mt-3 col-md-6 col-sm-12" to="/otp">
+                <button type="submit" className="btn btn-primary w-100 mb-2 ">
+                  <p className="mt-3">Submit</p>
+                </button>
+              </Link>
+              <Link className="col-lg-2 mt-3 col-md-6 col-sm-12" to="/resetpassword">
+                <button type="submit" className="btn btn-primary w-100 mb-2 ">
+                  <p className="mt-3">Forgot Password</p>
                 </button>
               </Link>
             </div>
