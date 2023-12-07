@@ -20,7 +20,7 @@ const CarouselComponent = () => {
   return (
     <div className="container-fluid p-0 mb-5">
       <div className="position-relative">
-        <img className="img-fluid w-100 h-50" src={images[currentSlide]} alt="" />
+        <img className="img-fluid w-100 h-50" src={images[currentSlide]} alt="" style={{ opacity: '0.7' }} />
         <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
           <div className="container">
             <div className="row justify-content-start">
@@ -28,10 +28,10 @@ const CarouselComponent = () => {
                 <h5 className="text-primary fw-bold text-uppercase mb-3">
                   Best Online Courses
                 </h5>
-                <h1 className="display-3 text-white animated slideInDown fw-bold ">
+                <h1 className="display-3 text-dark animated slideInDown fw-bold ">
                   {titles[currentSlide]}
                 </h1>
-                <p className="fs-5 fw-bold  mb-4 pb-2 text-white animated slideInDown">
+                <p className="fs-5 fw-bold  mb-4 pb-2 text-dark animated slideInDown">
                   {descriptions[currentSlide]}
                 </p>
                 <a href="" className="btn btn-primary fw-bold py-md-3 px-md-5 me-3">

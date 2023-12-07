@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 
 
 const validationSchema = Yup.object().shape({
@@ -12,6 +12,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const YourFormComponent = ({ searchQuery }) => {
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
 
@@ -20,7 +22,7 @@ const YourFormComponent = ({ searchQuery }) => {
   useEffect(() => {
     const savedFormData = JSON.parse(localStorage.getItem("formData")) || [];
     setFormData(savedFormData);
-    // console.log("savedFormData");
+    console.log("formData");
   }, []);
 
   const saveToLocalStorage = (data = false) => {
@@ -46,11 +48,15 @@ const YourFormComponent = ({ searchQuery }) => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-    console.log("Form submitted! Values:", values); // This line logs the form values
-    saveToLocalStorage(values);
-    resetForm();
-    setSubmitting(false);
-  }}
+          // Handle form submission here
+          console.log("Form submitted! Values:", values);
+
+          resetForm();
+          setSubmitting(false);
+
+          // Navigate to the desired route after form submission
+          navigate("/otp");
+        }}
       >
         {(formik) => (
           <Form>
@@ -93,18 +99,26 @@ const YourFormComponent = ({ searchQuery }) => {
             </div>
 
             {/* Submit button inside the form */}
-            <div className="row d-flex justify-content-center ">
-              <Link className="col-lg-2 mt-3 col-md-6 col-sm-12" to="/otp">
-                <button type="submit" className="btn btn-primary w-100 mb-2 ">
-                  <p className="mt-3">Submit</p>
-                </button>
-              </Link>
-              <Link className="col-lg-2 mt-3 col-md-6 col-sm-12" to="/resetpassword">
-                <button type="submit" className="btn btn-primary w-100 mb-2 ">
-                  <p className="mt-3">Forgot Password</p>
-                </button>
-              </Link>
-            </div>
+              <div className="row d-flex justify-content-center">
+            <div className="col-lg-2 mt-3">
+        <button type="submit" className="btn btn-primary w-100 mb-3">
+          <p className="mt-3">Submit</p>
+        </button>
+      </div>
+      <Link className="col-lg-2 mt-3" to='/otp'>
+        <button type="submit" className="btn btn-primary w-100 mb-3">
+          <p className="mt-3">Forgot Password</p>
+        </button>
+      </Link>
+     </div>
+
+      {/* Display error message when form submission fails */}
+      {/* {formik.submitCount > 0 && !formik.isValid && (
+        <div className="row d-flex justify-content-center">
+          <p className="text-danger">Please fill in all required fields correctly.</p>
+        </div>
+      )} */}
+     
             </div>
           </Form>
         )}

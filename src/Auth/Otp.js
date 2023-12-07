@@ -2,23 +2,25 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+// import { useHistory, useLocation } from "react-router-dom";
 
 function Otp() {
-  const formRef = React.useRef(null);
+  // const history = useHistory();
+  // const location = useLocation();
 
   const validationSchema = Yup.object().shape({
     otp: Yup.string()
-      .required('OTP is required')
-      .matches(/^[0-9]+$/, 'Must be only digits')
-      .length(4, 'Must be exactly 4 digits'),
+      .required("OTP is required")
+      .matches(/^[0-9]+$/, "Must be only digits")
+      .length(4, "Must be exactly 4 digits"),
   });
+
+  // const prevPage = location.state?.prevPage || "/";
 
   return (
     <div className="container-fluid">
       <Formik
-        innerRef={formRef}
         initialValues={{
-          'phone no': "",
           otp: ["", "", "", ""], // Initialize OTP as an array with four empty strings
         }}
         validationSchema={validationSchema}
@@ -26,7 +28,14 @@ function Otp() {
           console.log("Form submitted! Values:", values);
           console.log(values);
           resetForm();
-          setSubmitting(false);
+          // setSubmitting(false);
+          // if (prevPage === "login") {
+          //   history.push("/home");
+          // } else if (prevPage === "forgotPassword") {
+          //   history.push("/reset-password");
+          // } else {
+          //   history.push("/default-route"); // Change 'default-route' to your actual default route
+          // }
         }}
       >
         {(formik) => (
@@ -60,7 +69,7 @@ function Otp() {
               </div>
               {/* Submit button inside the form */}
               <div className="row d-flex justify-content-center">
-                <Link className="col-lg-2 mt-3 col-md-6 col-sm-12 " to='/'>
+                <Link className="col-lg-2 mt-3 col-md-6 col-sm-12 " to="/">
                   <button type="submit" className="btn btn-primary w-100 ">
                     <p className="mt-2">Submit</p>
                   </button>

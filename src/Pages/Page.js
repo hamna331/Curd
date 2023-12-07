@@ -5,6 +5,7 @@ import Categories from "./Categories";
 // import './Page.css';
 import img1 from "../images/Pages/carousel-1.jpg";
 import img2 from "../images/Pages/carousel-2.jpg";
+import Courses from "./Courses";
 
 function Page() {
   return (
@@ -21,8 +22,8 @@ function Page() {
             <a href="/" className="nav-item nav-link active fw-bold m-2">Home</a>
             <a href="about.html" className="nav-item nav-link fw-bold m-2">About</a>
             <a href="courses.html" className="nav-item nav-link fw-bold m-2">Courses</a>
-            <div className="nav-item dropdown">
-                <a href="#" className="nav-link dropdown-toggle fw-bold m-2" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+            <div className="nav-item">
+                <a href="#" className="nav-link  fw-bold m-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                 <ul className="dropdown-menu fade-down m-0" aria-labelledby="navbarDropdown">
                     <li><a href="team.html" className="dropdown-item">Our Team</a></li>
                     <li><a href="testimonial.html" className="dropdown-item">Testimonial</a></li>
@@ -111,6 +112,7 @@ function Page() {
       <CarouselComponent/>
       <Services/>
       <Categories/>
+      <Courses/>
     </>
   );
 }
