@@ -10,10 +10,16 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faMapMarkerAlt, faPhone,faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faMapMarkerAlt, faPhone,faAngleRight, faArrowUp, } from "@fortawesome/free-solid-svg-icons";
 
 
 function Footer() {
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+    }
   return (
     <>
          <div class="container-fluid bg-footer text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -105,8 +111,15 @@ function Footer() {
                     </div>
                 </div>
             </div>
+            {/* <!-- Back to Top --> */}
+            <button className="btn btn-lg btn-primary btn-lg-square back-to-top  ms-auto d-flex  justify-content-end">
+    <a href="#"  onClick={scrollToTop}>
+      <FontAwesomeIcon icon={faArrowUp} color='white' />
+    </a>
+    </button>
         </div>
     </div>
+    
     </>
   )
 }
