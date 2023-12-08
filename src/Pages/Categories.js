@@ -1,5 +1,5 @@
 import React from 'react'
-import './Page.css'; // Importing the CSS file
+import './Page.css'; 
 import cat1 from '../images/Pages/cat-1.jpg'
 import cat2 from '../images/Pages/cat-2.jpg'
 import cat3 from '../images/Pages/cat-3.jpg'

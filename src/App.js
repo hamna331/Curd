@@ -15,6 +15,8 @@ import LogIn from './Auth/LogIn';
 import ArrayOfObjects from './Home/dataBase/arrayOfObjects';
 import Otp from './Auth/Otp';
 import ResetPassword from './Auth/ResetPassword'
+import Team from './Pages/Team';
+import Testimonial from './Pages/Testimonial';
 
 
 const App = () => {
@@ -38,6 +40,9 @@ const App = () => {
         <Route path="/login" element={<LogIn/>} />
         <Route path="/otp" element={<Otp/>} />
         <Route path="/resetpassword" element={<ResetPassword/>} />
+         <Route path="/Team" element={<Team/>} />
+        <Route path="/testimonial" element={<Testimonial/>} /> 
+
 
 
 

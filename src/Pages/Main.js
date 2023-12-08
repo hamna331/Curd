@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Page.css'; // Importing the CSS file
+import './Page.css'; 
 import img1 from "../images/Pages/carousel-1.jpg";
 import img2 from "../images/Pages/carousel-2.jpg";
 

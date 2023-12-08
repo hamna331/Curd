@@ -38,6 +38,13 @@ const YourFormComponent = ({ searchQuery }) => {
     setEditIndex(null);
   };
 
+  const handleForgotPassword = () => {
+    navigate("/otp", { state: { fromForgotPassword: true } });
+  };
+  const handleLogin = () => {
+    navigate("/otp", { state: { fromLogin: true } });
+  };
+
   return (
     <div className="container-fluid bg-light">
       <Formik
@@ -55,7 +62,7 @@ const YourFormComponent = ({ searchQuery }) => {
           setSubmitting(false);
 
           // Navigate to the desired route after form submission
-          navigate("/otp");
+         handleLogin();
         }}
       >
         {(formik) => (
@@ -105,19 +112,14 @@ const YourFormComponent = ({ searchQuery }) => {
           <p className="mt-3">Submit</p>
         </button>
       </div>
-      <Link className="col-lg-2 mt-3" to='/otp'>
-        <button type="submit" className="btn btn-primary w-100 mb-3">
+      <Link to='/otp' className="col-lg-2 mt-3" onClick={handleForgotPassword}>
+        <button type="button" className="btn btn-primary w-100 mb-3">
           <p className="mt-3">Forgot Password</p>
         </button>
       </Link>
      </div>
 
-      {/* Display error message when form submission fails */}
-      {/* {formik.submitCount > 0 && !formik.isValid && (
-        <div className="row d-flex justify-content-center">
-          <p className="text-danger">Please fill in all required fields correctly.</p>
-        </div>
-      )} */}
+    
      
             </div>
           </Form>

@@ -100,7 +100,7 @@ function Top() {
                         </li>
                         <li className="nav-item" style={{ marginRight: '15px' }}>
                             <Link to="/Page" className='style-non'>
-                                Pages
+                            eLEARNING
                             </Link>
                         </li>
                         {/* <li className="nav-item" style={{ marginRight: '15px' }}>
