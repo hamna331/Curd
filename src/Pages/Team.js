@@ -64,7 +64,7 @@ function Team() {
                 data-wow-delay="0.1s"
                 key={ind}
               >
-                <div className="team-item bg-light">
+                <div className=" bg-light">
                   <div className="overflow-hidden">
                     <img className="img-fluid" src={val.imgsrc} alt="" />
                   </div>

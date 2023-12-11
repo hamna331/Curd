@@ -17,6 +17,7 @@ import Otp from './Auth/Otp';
 import ResetPassword from './Auth/ResetPassword'
 import Team from './Pages/Team';
 import Testimonial from './Pages/Testimonial';
+import Contact from './Pages/Contact';
 
 
 const App = () => {
@@ -42,6 +43,9 @@ const App = () => {
         <Route path="/resetpassword" element={<ResetPassword/>} />
          <Route path="/Team" element={<Team/>} />
         <Route path="/testimonial" element={<Testimonial/>} /> 
+        <Route path="/contact" element={<Contact/>} /> 
+
+
 
 
 

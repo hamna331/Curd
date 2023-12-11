@@ -2,47 +2,31 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-// import { useHistory, useLocation } from "react-router-dom";
 
 function Otp() {
-  // const history = useHistory();
-  // const location = useLocation();
 
   const validationSchema = Yup.object().shape({
-    otp: Yup.string()
-      .required("OTP is required")
-      .matches(/^[0-9]+$/, "Must be only digits")
-      .length(4, "Must be exactly 4 digits"),
+    otp: Yup.array()
+      .of(Yup.string().matches(/^[0-9]$/, "Must be a digit").required("Required"))
+      .min(4, "Must contain 4 digits")
+      .max(4, "Must contain 4 digits"),
   });
-
-  // const prevPage = location.state?.prevPage || "/";
 
   return (
     <div className="container-fluid">
       <Formik
         initialValues={{
-          otp: ["", "", "", ""], // Initialize OTP as an array with four empty strings
+          otp: ["", "", "", ""], 
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           console.log("Form submitted! Values:", values);
-          console.log(values);
           resetForm();
-          // setSubmitting(false);
-          // if (prevPage === "login") {
-          //   history.push("/home");
-          // } else if (prevPage === "forgotPassword") {
-          //   history.push("/reset-password");
-          // } else {
-          //   history.push("/default-route"); // Change 'default-route' to your actual default route
-          // }
         }}
       >
         {(formik) => (
           <Form>
-            <div className="container  mt-1 ">
-              {/* <h6 className="text-light d-flex justify-content-center mt-3">otp send in just sec</h6> */}
-              {/* OTP Input Fields */}
+            <div className="container mt-1">
               <div className="row d-flex justify-content-center">
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   <label htmlFor="otp" className="form-label mt-3">
@@ -57,6 +41,12 @@ function Otp() {
                         id={`otp${index}`}
                         name={`otp[${index}]`}
                         maxLength={1} // Limit input to single character
+                        onChange={(e) => {
+                          const { value } = e.target;
+                          const otpValues = [...formik.values.otp];
+                          otpValues[index] = value;
+                          formik.setFieldValue("otp", otpValues);
+                        }}
                       />
                     ))}
                   </div>
@@ -69,11 +59,9 @@ function Otp() {
               </div>
               {/* Submit button inside the form */}
               <div className="row d-flex justify-content-center">
-                <Link className="col-lg-2 mt-3 col-md-6 col-sm-12 " to="/">
-                  <button type="submit" className="btn btn-primary w-100 ">
-                    <p className="mt-2">Submit</p>
-                  </button>
-                </Link>
+                <button type="submit" className="btn btn-primary w-25 mt-3">
+                  <p className="mt-2">Submit</p>
+                </button>
               </div>
             </div>
           </Form>

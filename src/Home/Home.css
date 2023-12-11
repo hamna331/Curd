@@ -179,6 +179,7 @@
     animation-fill-mode:both;
   }
   
+  
 /* @keyframes fadeInDown {
     from {
       opacity: 0;
@@ -478,20 +479,20 @@
   }
 }
 /*** Testimonial Start ***/
-
-.testimonial-item {
+ 
+ .testimonial-item {
   background: #e3f0eb;
 
 }
 
-.testimonial-carousel .owl-dots {
+/* .testimonial-carousel .owl-dots {
   margin-top: 15px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-}
+} */
 
-.testimonial-carousel .owl-dot {
+/* .testimonial-carousel .owl-dot {
   position: relative;
   display: inline-block;
   margin: 0 5px;
@@ -500,26 +501,58 @@
   background: #c1dad0;
   border-radius: 15px;
   transition: .5s;
-}
+} */
 
 .testimonial-carousel .owl-dot.active {
   width: 30px;
   background: var(--bs-primary);
-}
+} 
 
-.testimonial-carousel .owl-item.center {
+/* .testimonial-carousel .owl-item.center {
   position: relative;
   z-index: 1;
-}
+} */
 
-.testimonial-carousel .owl-item .testimonial-item {
+/* .testimonial-carousel .owl-item .testimonial-item {
   transition: .5s;
-}
+} */
 
 .testimonial-carousel .owl-item.center .testimonial-item {
-  background: #FFFFFF !important;
-  box-shadow: 0 0 30px #DDDDDD;
+  /* background: #FFFFFF !important; */
+  /* box-shadow: 0 0 30px #DDDDDD; */
+} 
+/* Styles for the carousel container */
+.testimonial-carousel {
+  display: flex;
+  /* overflow-x: hidden; */
+  animation: scroll 10s linear infinite; /* Adjust animation duration as needed */
 }
+
+/* Keyframes for the scrolling animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Styles for individual testimonial items */
+.testimonial-item {
+  /* flex: 0 0 auto; */
+  height: fit-content;
+  width: 300px; /* Adjust width based on your design */
+  /* margin-right: 5px;
+  margin-left: 5px; */
+ /* Adjust spacing between items */
+  /* transition: transform 0.5s ease; Smooth transition for individual items */
+}
+
+/* Optional: Hide scrollbar for modern browsers */
+/* .testimonial-carousel::-webkit-scrollbar {
+  display: none;
+} */
 
 /*** Testimonial End ***/
 /*** Contact Start ***/
@@ -563,5 +596,11 @@
     background: var(--bs-secondary);
     border: 0;
 }
-
+.back-to-top {
+  position: fixed;
+  display: none;
+  right: 45px;
+  bottom: 45px;
+  z-index: 99;
+}
 /*** Footer End ***/

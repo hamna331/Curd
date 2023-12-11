@@ -71,9 +71,9 @@ function Page() {
                 </li>
               </ul>
             </div>
-            <a href="contact.html" className="nav-item nav-link fw-bold m-2">
+            <Link to="/contact" className="nav-item nav-link fw-bold m-2">
               Contact
-            </a>
+            </Link>
           </div>
           <a
             href="/"
